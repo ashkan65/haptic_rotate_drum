@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpest.a  CMakeFiles/pest.dir/pest.cpp.o
+/usr/bin/ranlib libpest.a

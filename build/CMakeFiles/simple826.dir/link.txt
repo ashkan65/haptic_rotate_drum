@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsimple826.a  CMakeFiles/simple826.dir/simple826.cpp.o
+/usr/bin/ranlib libsimple826.a

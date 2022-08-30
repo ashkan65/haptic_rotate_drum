@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/naghmehz/Documents/sensoray-sdk/driver/826api.h
+linux/types.h
+-
+stdint.h
+-
+
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.cpp
+iostream
+-
+simple826.hpp
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.hpp
+stdio.h
+-
+stdlib.h
+-
+math.h
+-
+sstream
+-
+
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.hpp
+chrono
+-
+826api.h
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/826api.h
+type.hpp
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/type.hpp
+thread
+-
+
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/type.hpp
+vector
+-
+

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/staircase.cpp
+iostream
+-
+staircase.hpp
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/staircase.hpp
+
+/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/staircase.hpp
+iostream
+-
+

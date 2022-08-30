@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp
+PointATC3DG.h
+/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.h
+cstdio
+-
+cstdarg
+-
+algorithm
+-
+usb.h
+-
+

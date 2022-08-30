@@ -1,0 +1,2 @@
+/usr/bin/ar qc libstaircase.a  CMakeFiles/staircase.dir/staircase.cpp.o
+/usr/bin/ranlib libstaircase.a

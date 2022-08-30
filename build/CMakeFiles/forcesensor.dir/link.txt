@@ -1,0 +1,2 @@
+/usr/bin/ar qc libforcesensor.a  CMakeFiles/forcesensor.dir/forcesensor.cpp.o
+/usr/bin/ranlib libforcesensor.a
