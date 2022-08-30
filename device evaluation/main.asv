@@ -1,0 +1,36 @@
+clc;clear all;
+pos1_modified =  [0.001,-0.00034,0.00015,-0.00037,0,-0.00019,-0.00054,-0.00024,-0.00015,-0.0001,-0.00017,-0.00014,-0.0001,-0.0001,-0.00012,-0.0001,-0.0001,-0.0002,-0.0002,-0.00019,-0.00012,-0.00016];
+pos2_modified = [-0.0161,-0.00899,-0.007,-0.005,-0.004,-0.0032,-0.0028,-0.00259,-0.00239,-0.002314,-0.0022,-0.0019,-0.0018,-0.0016,-0.00155,-0.0015,-0.0014,-0.00138,-0.0014,-0.0012,-0.00117,-0.00108];
+position_modified = pos1_modified-pos2_modified;
+force = ones(1,22)*1.96;%convert to Newton
+stiff_modified(:)=(force(:)./position_modified(:));
+for i=1:32
+   k(1,i)=i*100;
+end
+
+
+ pos1_unmodified=[0.0063, 0.0016 , 0.004 ,0.0010, 0.0009, 0.0006 ,0, 0.0001, -0.0001,0.0001, -0.0001,0.0001,0.0001, -0.0001, -0.0002, -0.0002, -0.0002, -0.0002, -0.0001, -0.0001, -0.0001, -0.0001, -0.0002, -0.0001, -0.0002, -0.0001,0,0, -0.0001, -0.0001, -0.0001,  -0.0001];
+% %p2 is the mean for lower values in position z data
+pos2_unmodified=[-0.0323,-0.0145,-0.0092,-0.007,-0.0058,-0.0052,-0.0036,-0.0032,-0.0028,-0.0027,-0.0024,-0.0023,-0.0020,-0.0019,-0.0018,-0.0016,-0.0016,-0.0017,-0.0015, -0.0014, -0.0013, -0.0013, -0.0013, -0.0012, -0.0012, -0.0011, -0.0012, -0.0011, -0.001, -0.001, -0.0011, -0.001];
+position_unmodified = pos1_unmodified-pos2_unmodified;
+force2 = ones(1,32)*1.96;%convert to Newton
+stiff_unmodified(:)=(force2(:)./position_unmodified(:));
+% 
+hold on
+
+plot(k(1:22),k(1:22),'r','LineWidth',2)
+g_modified = fit(k(1:22)',stiff_modified(1:22)','poly2','Normalize','on','Robust','Bisquare');
+a=plot(g_modified,k(1:22)',stiff_modified(1:22)','.')
+set(a,'color','k','LineWidth',2)
+g_unmodified = fit(k(1:32)',stiff_unmodified(1:32)','poly2','Normalize','on','Robust','Bisquare');
+% % g_prime = fit(stiff_unmodified(1:32)',k(1:32)','poly3','Normalize','on','Robust','Bisquare');
+b=plot(g_unmodified,k(1:32)',stiff_unmodified(1:32)','.')
+% % b=plot(g_prime,stiff_unmodified(1:32)',k(1:32)','.')
+set(b,'color','b','LineWidth',2)
+% legend('Input','Modified Output','Modified Fit','Unmodified Output','Unmodified Fit')
+% xlabel('Actual Stiffness')
+% ylabel('Desired Stiffness')
+% 
+% % for i=1:32
+% %     g(i)=g_prime(100)
+% % end
