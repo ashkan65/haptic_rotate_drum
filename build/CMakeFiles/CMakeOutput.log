@@ -1,4 +1,4 @@
-The system is: Linux - 5.4.0-120-generic - x86_64
+The system is: Linux - 5.4.0-135-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -28,28 +28,28 @@ The CXX compiler identification is GNU, found in "/home/naghmehz/Downloads/Senso
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0af3b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0af3b.dir/build.make CMakeFiles/cmTC_0af3b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9083e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9083e.dir/build.make CMakeFiles/cmTC_9083e.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0af3b.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0af3b.dir/testCCompiler.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_0af3b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0af3b.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_0af3b.dir/testCCompiler.c.o  -o cmTC_0af3b 
+Building C object CMakeFiles/cmTC_9083e.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_9083e.dir/testCCompiler.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_9083e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9083e.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_9083e.dir/testCCompiler.c.o  -o cmTC_9083e 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_6fc98/fast"
-/usr/bin/make -f CMakeFiles/cmTC_6fc98.dir/build.make CMakeFiles/cmTC_6fc98.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1b182/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1b182.dir/build.make CMakeFiles/cmTC_1b182.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_6fc98
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6fc98.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o  -o cmTC_6fc98 
+Building C object CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_1b182
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b182.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o  -o cmTC_1b182 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -61,9 +61,9 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6fc98' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPqqK1t.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6fc98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6fc98' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1b182' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQ6F5L5.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_1b182 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1b182' '-mtune=generic' '-march=x86-64'
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -71,14 +71,14 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_6fc98/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_6fc98.dir/build.make CMakeFiles/cmTC_6fc98.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_1b182/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_1b182.dir/build.make CMakeFiles/cmTC_1b182.dir/build]
   ignore line: [make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_6fc98]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6fc98.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o  -o cmTC_6fc98 ]
+  ignore line: [Building C object CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_1b182]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b182.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o  -o cmTC_1b182 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -90,13 +90,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_6fc98' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPqqK1t.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_6fc98 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_1b182' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQ6F5L5.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_1b182 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccPqqK1t.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccQ6F5L5.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -114,7 +114,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_6fc98] ==> ignore
+    arg [cmTC_1b182] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -126,7 +126,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_6fc98.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_1b182.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -158,14 +158,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1d0ee/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1d0ee.dir/build.make CMakeFiles/cmTC_1d0ee.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_18618/fast"
+/usr/bin/make -f CMakeFiles/cmTC_18618.dir/build.make CMakeFiles/cmTC_18618.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1d0ee.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_1d0ee.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_1d0ee
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1d0ee.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_1d0ee.dir/feature_tests.c.o  -o cmTC_1d0ee 
+Building C object CMakeFiles/cmTC_18618.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_18618.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_18618
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18618.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_18618.dir/feature_tests.c.o  -o cmTC_18618 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -178,14 +178,14 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d7d12/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d7d12.dir/build.make CMakeFiles/cmTC_d7d12.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9e552/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9e552.dir/build.make CMakeFiles/cmTC_9e552.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d7d12.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_d7d12.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_d7d12
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7d12.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_d7d12.dir/feature_tests.c.o  -o cmTC_d7d12 
+Building C object CMakeFiles/cmTC_9e552.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_9e552.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_9e552
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e552.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_9e552.dir/feature_tests.c.o  -o cmTC_9e552 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -198,14 +198,14 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_fd071/fast"
-/usr/bin/make -f CMakeFiles/cmTC_fd071.dir/build.make CMakeFiles/cmTC_fd071.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_02474/fast"
+/usr/bin/make -f CMakeFiles/cmTC_02474.dir/build.make CMakeFiles/cmTC_02474.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_fd071.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_fd071.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_fd071
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fd071.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_fd071.dir/feature_tests.c.o  -o cmTC_fd071 
+Building C object CMakeFiles/cmTC_02474.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_02474.dir/feature_tests.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_02474
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_02474.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_02474.dir/feature_tests.c.o  -o cmTC_02474 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -216,28 +216,28 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1b75a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1b75a.dir/build.make CMakeFiles/cmTC_1b75a.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f0f8a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f0f8a.dir/build.make CMakeFiles/cmTC_f0f8a.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_1b75a.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_1b75a.dir/testCXXCompiler.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_1b75a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1b75a.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_1b75a.dir/testCXXCompiler.cxx.o  -o cmTC_1b75a 
+Building CXX object CMakeFiles/cmTC_f0f8a.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_f0f8a.dir/testCXXCompiler.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_f0f8a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0f8a.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_f0f8a.dir/testCXXCompiler.cxx.o  -o cmTC_f0f8a 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b428e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b428e.dir/build.make CMakeFiles/cmTC_b428e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_67616/fast"
+/usr/bin/make -f CMakeFiles/cmTC_67616.dir/build.make CMakeFiles/cmTC_67616.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_b428e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b428e.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b428e 
+Building CXX object CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_67616
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_67616.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_67616 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -249,9 +249,9 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b428e' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccxOniRQ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b428e /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b428e' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_67616' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKnwB4o.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_67616 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_67616' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -259,14 +259,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_b428e/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_b428e.dir/build.make CMakeFiles/cmTC_b428e.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_67616/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_67616.dir/build.make CMakeFiles/cmTC_67616.dir/build]
   ignore line: [make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_b428e]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b428e.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_b428e ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_67616]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_67616.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_67616 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -278,13 +278,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b428e' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccxOniRQ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_b428e /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_67616' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccKnwB4o.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_67616 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccxOniRQ.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccKnwB4o.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -302,7 +302,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_b428e] ==> ignore
+    arg [cmTC_67616] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -314,7 +314,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_b428e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_67616.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -342,14 +342,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5c43b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5c43b.dir/build.make CMakeFiles/cmTC_5c43b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_bb0b2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bb0b2.dir/build.make CMakeFiles/cmTC_bb0b2.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_5c43b.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_5c43b.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_5c43b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c43b.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_5c43b.dir/feature_tests.cxx.o  -o cmTC_5c43b 
+Building CXX object CMakeFiles/cmTC_bb0b2.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_bb0b2.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_bb0b2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb0b2.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_bb0b2.dir/feature_tests.cxx.o  -o cmTC_bb0b2 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -415,14 +415,14 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9372d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9372d.dir/build.make CMakeFiles/cmTC_9372d.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1f145/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1f145.dir/build.make CMakeFiles/cmTC_1f145.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_9372d.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_9372d.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_9372d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9372d.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_9372d.dir/feature_tests.cxx.o  -o cmTC_9372d 
+Building CXX object CMakeFiles/cmTC_1f145.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_1f145.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_1f145
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f145.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_1f145.dir/feature_tests.cxx.o  -o cmTC_1f145 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -488,14 +488,14 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e28c5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e28c5.dir/build.make CMakeFiles/cmTC_e28c5.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2405c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2405c.dir/build.make CMakeFiles/cmTC_2405c.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_e28c5.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_e28c5.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_e28c5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e28c5.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_e28c5.dir/feature_tests.cxx.o  -o cmTC_e28c5 
+Building CXX object CMakeFiles/cmTC_2405c.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_2405c.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2405c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2405c.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_2405c.dir/feature_tests.cxx.o  -o cmTC_2405c 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -561,14 +561,14 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7050f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7050f.dir/build.make CMakeFiles/cmTC_7050f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c5ba1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c5ba1.dir/build.make CMakeFiles/cmTC_c5ba1.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_7050f.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_7050f.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_7050f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7050f.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_7050f.dir/feature_tests.cxx.o  -o cmTC_7050f 
+Building CXX object CMakeFiles/cmTC_c5ba1.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_c5ba1.dir/feature_tests.cxx.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c5ba1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5ba1.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_c5ba1.dir/feature_tests.cxx.o  -o cmTC_c5ba1 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
@@ -632,112 +632,112 @@ make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/bui
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d8e17/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d8e17.dir/build.make CMakeFiles/cmTC_d8e17.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_0d50f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0d50f.dir/build.make CMakeFiles/cmTC_0d50f.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d8e17.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_d8e17.dir/CheckIncludeFile.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_d8e17
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8e17.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_d8e17.dir/CheckIncludeFile.c.o  -o cmTC_d8e17 
+Building C object CMakeFiles/cmTC_0d50f.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_0d50f.dir/CheckIncludeFile.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_0d50f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0d50f.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_0d50f.dir/CheckIncludeFile.c.o  -o cmTC_0d50f 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_51c20/fast"
-/usr/bin/make -f CMakeFiles/cmTC_51c20.dir/build.make CMakeFiles/cmTC_51c20.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_30cd3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_30cd3.dir/build.make CMakeFiles/cmTC_30cd3.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_51c20.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_51c20.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_51c20
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51c20.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_51c20.dir/CheckFunctionExists.c.o  -o cmTC_51c20 -lpthread 
+Building C object CMakeFiles/cmTC_30cd3.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_30cd3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_30cd3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30cd3.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_30cd3.dir/CheckFunctionExists.c.o  -o cmTC_30cd3 -lpthread 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1a417/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1a417.dir/build.make CMakeFiles/cmTC_1a417.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_19094/fast"
+/usr/bin/make -f CMakeFiles/cmTC_19094.dir/build.make CMakeFiles/cmTC_19094.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1a417.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_1a417.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_1a417
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a417.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTC_1a417.dir/CheckFunctionExists.c.o  -o cmTC_1a417 /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+Building C object CMakeFiles/cmTC_19094.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay   -o CMakeFiles/cmTC_19094.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_19094
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19094.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay    CMakeFiles/cmTC_19094.dir/CheckFunctionExists.c.o  -o cmTC_19094 /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function gethostbyname exists passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d6c31/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d6c31.dir/build.make CMakeFiles/cmTC_d6c31.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_739c4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_739c4.dir/build.make CMakeFiles/cmTC_739c4.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d6c31.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_d6c31.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d6c31
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6c31.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_d6c31.dir/CheckFunctionExists.c.o  -o cmTC_d6c31 
+Building C object CMakeFiles/cmTC_739c4.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname   -o CMakeFiles/cmTC_739c4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_739c4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_739c4.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname    CMakeFiles/cmTC_739c4.dir/CheckFunctionExists.c.o  -o cmTC_739c4 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function connect exists passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b3cd1/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b3cd1.dir/build.make CMakeFiles/cmTC_b3cd1.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f4a5f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f4a5f.dir/build.make CMakeFiles/cmTC_f4a5f.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_b3cd1.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_b3cd1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_b3cd1
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3cd1.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_b3cd1.dir/CheckFunctionExists.c.o  -o cmTC_b3cd1 
+Building C object CMakeFiles/cmTC_f4a5f.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect   -o CMakeFiles/cmTC_f4a5f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f4a5f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f4a5f.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect    CMakeFiles/cmTC_f4a5f.dir/CheckFunctionExists.c.o  -o cmTC_f4a5f 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function remove exists passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_36e70/fast"
-/usr/bin/make -f CMakeFiles/cmTC_36e70.dir/build.make CMakeFiles/cmTC_36e70.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f263a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f263a.dir/build.make CMakeFiles/cmTC_f263a.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_36e70.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_36e70.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_36e70
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_36e70.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_36e70.dir/CheckFunctionExists.c.o  -o cmTC_36e70 
+Building C object CMakeFiles/cmTC_f263a.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove   -o CMakeFiles/cmTC_f263a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f263a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f263a.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove    CMakeFiles/cmTC_f263a.dir/CheckFunctionExists.c.o  -o cmTC_f263a 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function shmat exists passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_295b9/fast"
-/usr/bin/make -f CMakeFiles/cmTC_295b9.dir/build.make CMakeFiles/cmTC_295b9.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9c788/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9c788.dir/build.make CMakeFiles/cmTC_9c788.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_295b9.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_295b9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_295b9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_295b9.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_295b9.dir/CheckFunctionExists.c.o  -o cmTC_295b9 
+Building C object CMakeFiles/cmTC_9c788.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat   -o CMakeFiles/cmTC_9c788.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9c788
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c788.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat    CMakeFiles/cmTC_9c788.dir/CheckFunctionExists.c.o  -o cmTC_9c788 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 
 Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
 Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c8e3b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c8e3b.dir/build.make CMakeFiles/cmTC_c8e3b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a2d2b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a2d2b.dir/build.make CMakeFiles/cmTC_a2d2b.dir/build
 make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c8e3b.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_c8e3b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c8e3b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8e3b.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTC_c8e3b.dir/CheckFunctionExists.c.o  -o cmTC_c8e3b -lICE 
+Building C object CMakeFiles/cmTC_a2d2b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber   -o CMakeFiles/cmTC_a2d2b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a2d2b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2d2b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber    CMakeFiles/cmTC_a2d2b.dir/CheckFunctionExists.c.o  -o cmTC_a2d2b -lICE 
 make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
 
 

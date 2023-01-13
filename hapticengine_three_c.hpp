@@ -207,17 +207,16 @@ double new_stimulus =max_stiffness;
 // A sphere for magnatic tracker
 cShapeSphere* birdSphere;
 
-// four different boxes
-cShapeBox* box0;
-cShapeBox* box1;
-cShapeBox* box2;
-cShapeBox* box3;
+// cylinders for plates
+cShapeCylinder* cylinder0;
+cShapeCylinder* cylinder1;
+cShapeCylinder* cylinder2;
 
 // Meter to Inch Conversion meter = inch / 39.37
 const double InchPerMeter = 39.37;
 const cVector3d OriginCorrection = cVector3d(- 0.27, 0.025, 0.32);
 cVector3d CalibrationCorrection = cVector3d(0, 0, 0.16);
-bool bIsCalibrationMode = true;
+bool bIsCalibrationMode = false;
 int currentPlateNumber = -1;
 // a virtual mesh like object for pentagon
 // cMesh* object;
@@ -268,6 +267,8 @@ void errorCallback(int a_error, const char* a_description)
     cout << "Error: " << a_description << endl;
 }
 
+
+
 //------------------------------------------------------------------------------
 
 void updateGraphics(void)
@@ -281,16 +282,13 @@ void updateGraphics(void)
     std::string currentPlateString = "Not On Plate     Stiffness: ";
     if (currentPlateNumber >= 0){
         if (currentPlateNumber == 0) {
-            currentPlateString = " Box 0     Stiffness: ";
+            currentPlateString = " Plate Blue     Stiffness: ";
         }
         else if (currentPlateNumber == 1) {
-            currentPlateString = " Box 1     Stiffness: ";
+            currentPlateString = " Plate Yellow     Stiffness: ";
         }
         else if (currentPlateNumber == 2) {
-            currentPlateString = " Box 2     Stiffness: ";
-        }
-        else if (currentPlateNumber == 3) {
-            currentPlateString = " Box 3     Stiffness: ";
+            currentPlateString = " Plate Pink     Stiffness: ";
         }
     }
     if (bIsCalibrationMode){
@@ -307,12 +305,11 @@ void updateGraphics(void)
     labelRates->setLocalPos((int)(0.5 * (width - labelRates->getWidth())), 15);
 
     // bird local posion updated in haptic thread
-    birdSphere->setLocalPos(0.5 * birdLocalPosition);
+    birdSphere->setLocalPos(birdLocalPosition);
 
-    
     if (currentPlateNumber >= 0){
-        // 0.05 is the base height and 0.01 is the offset
-        double height = hapticDevicePosition.x() + 0.051;
+        // 0.05 is the base height and 0.05 is the offset
+        double height = hapticDevicePosition.x() + 0.055;
         if (height > 0.05){
             height = 0.05;
         }
@@ -320,28 +317,28 @@ void updateGraphics(void)
             height = 0.01;
         }
 
-        if (currentPlateNumber >= 0) {
-            box0->setSize(0.05, 0.05, 0.05);
-            box1->setSize(0.05, 0.05, 0.05);
-            box2->setSize(0.05, 0.05, 0.05);
-            box3->setSize(0.05, 0.05, 0.05);
-        }
+        // tracker not touching the device
+        // if (birdLocalPosition.x() > 0.01){
+        //    height = 0.05;
+        // }
 
         // In one of the regions
         if (currentPlateNumber == 0) {
-            box0->setSize(0.05, 0.05, height);
+            cylinder0->setHeight(height);
+            cylinder1->setHeight(0.05);
+            cylinder2->setHeight(0.05);
         }
         else if (currentPlateNumber == 1) {
-            box1->setSize(0.05, 0.05, height);
+            cylinder1->setHeight(height);
+            cylinder0->setHeight(0.05);
+            cylinder2->setHeight(0.05);
         }
         else if (currentPlateNumber == 2) {
-            box2->setSize(0.05, 0.05, height);
-        }
-        else if (currentPlateNumber == 3 && box3) {
-            box3->setSize(0.05, 0.05, height);
+            cylinder2->setHeight(height);
+            cylinder1->setHeight(0.05);
+            cylinder0->setHeight(0.05);
         }
     }
-    
 
     /////////////////////////////////////////////////////////////////////
     // RENDER SCENE
@@ -517,23 +514,49 @@ void updateHaptics(void* shared_data)
 	double add=0;
     // main haptic simulation loop
     int loopcount=0;
-    cVector3d lastDesiredPosition(0.01, 0.0, 0.0);
     while(simulationRunning)
     {
+    	//loopcount++;
         /////////////////////////////////////////////////////////////////////
         // READ HAPTIC DEVICE
         /////////////////////////////////////////////////////////////////////
 
         // read position 
+        //cVector3d position;
         hapticDevice->getPosition(position);
         
         // read orientation 
         cMatrix3d rotation;
         hapticDevice->getRotation(rotation);
 
+        // read gripper position
+        //double gripperAngle;
+        //hapticDevice->getGripperAngleRad(gripperAngle);q
+
         // read linear velocity 
         cVector3d linearVelocity;
         hapticDevice->getLinearVelocity(linearVelocity);
+
+        // read angular velocity
+        //cVector3d angularVelocity;
+        //hapticDevice->getAngularVelocity(angularVelocity);
+
+        // read gripper angular velocity
+        //double gripperAngularVelocity;
+        //hapticDevice->getGripperAngularVelocity(gripperAngularVelocity);
+
+        // read user-switch status (button 0)
+        //bool button0, button1, button2, button3;
+        //button0 = false;
+        //button1 = false;
+        //button2 = false;
+        //button3 = false;
+
+        //hapticDevice->getUserSwitch(0, button0);
+        //hapticDevice->getUserSwitch(1, button1);
+        //hapticDevice->getUserSwitch(2, button2);
+        //hapticDevice->getUserSwitch(3, button3);
+
 
         /////////////////////////////////////////////////////////////////////
         // UPDATE 3D CURSOR MODEL
@@ -558,6 +581,28 @@ void updateHaptics(void* shared_data)
         {
             cursor->m_material->setGreenMediumAquamarine();
         }
+        /*
+        else if (button1)
+        {
+            cursor->m_material->setYellowGold();
+        }
+        else if (button2)
+        {
+            cursor->m_material->setOrangeCoral();
+        }
+        else if (button3)
+        {
+            cursor->m_material->setPurpleLavender();
+        }
+        else
+        {
+            cursor->m_material->setBlueRoyal();
+        }
+
+        // update global variable for graphic display update
+        
+
+*/
 
         // Add offset and convert axis
         cVector3d birdPositionMeter((-dZ / InchPerMeter) + OriginCorrection.x(),
@@ -576,80 +621,49 @@ void updateHaptics(void* shared_data)
         birdLocalPosition = birdPositionMeter - basePositionMeter;
         birdLocalPosition -= CalibrationCorrection;
         hapticDevicePosition = position;
-
         /////////////////////////////////////////////////////////////////////
         // COMPUTE AND APPLY FORCES
         /////////////////////////////////////////////////////////////////////
 
-        // variables for forces
-        cVector3d force (0,0,0);
-        cVector3d torque (0,0,0);
-        double gripperForce = 0.0;
-        
-        cVector3d desiredPosition(0.01, 0.0, 0.0);
-        cVector3d defaultPosition(0.01, 0.0, 0.0);
 
-        // Calibration Mode: Force desired position to be (0, 0, 0)
-        if (bIsCalibrationMode){
-            // Set Falcon to Origin
-            stiffness = 1000;
-            CalibrationCorrection += birdLocalPosition;
+        // cylinder coordinate in local coordinate system device
+        cVector3d cylinder0LocalPos(0.03, -0.0, 0.0);
+        cVector3d cylinder1LocalPos(-0.03, 0.034, 0.0);
+        cVector3d cylinder2LocalPos(-0.03, -0.034, 0.0);
 
-            loopcount=0;
-
-            cVector3d displacement = (desiredPosition - position);
-
-            forceField = cVector3d(stiffness * displacement.x(), stiffness * displacement.y() * 0.1, stiffness * displacement.z() * 0.1);
-
-            force.add(gravityCorrection);
-            force.add(forceField);
-
-            hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
-
-            freqCounterHaptics.signal(1);
-            continue;
-        }
-
-        // box coordinate in axis of haptic device
-        cVector3d box0Pos(0.01, 0.02, -0.02);
-        cVector3d box1Pos(0.01, 0.02, 0.02);
-        cVector3d box2Pos(0.01, -0.02, 0.02);
-        cVector3d box3Pos(0.01, -0.02, -0.02);
+        // cylinder coordinate in axis of haptic device
+        cVector3d cylinder0Pos(0.0, -0.0, -0.03);
+        cVector3d cylinder1Pos(0.0, 0.034, 0.03);
+        cVector3d cylinder2Pos(0.0, -0.034, 0.03);
 
         // the default desired position is the origin
-
+        cVector3d desiredPosition(0.0, 0.0, 0.0);
         // If tracker is above a platform, we think the tracker is in workspace 
         // and start moving the haptic device 
         
-        if (!bIsCalibrationMode){ 
-            // box 0
-            if (birdLocalPosition.x() > 0.01 && birdLocalPosition.y() > 0.01){
-                desiredPosition = box0Pos;
-                stiffness = 2000;
+        if (birdLocalPosition.z() > -0.1){ 
+            // Cylinder 0
+            if (horizontalSquareDistanceBetween(birdLocalPosition, cylinder0LocalPos) < 0.0009 || birdLocalPosition.x() > 0.03){
+                desiredPosition = cylinder0Pos;
+                stiffness = 1000;
                 currentPlateNumber = 0;
             }
-            // box 1
-            else if (birdLocalPosition.x() < -0.01 && birdLocalPosition.y() > 0.01){
-                desiredPosition = box1Pos;
-                stiffness = 2000;
+            // Cylinder 1
+            else if (horizontalSquareDistanceBetween(birdLocalPosition, cylinder1LocalPos) < 0.0009 || (birdLocalPosition.x() < -0.02 && birdLocalPosition.y() > 0.02)){
+                desiredPosition = cylinder1Pos;
+                stiffness = 750;
                 currentPlateNumber = 1;
             }
-            // box 2
-            else if (birdLocalPosition.x() < -0.01 && birdLocalPosition.y() < -0.01){
-                desiredPosition = box2Pos;
-                stiffness = 2000;
+            // Cylinder 2
+            else if (horizontalSquareDistanceBetween(birdLocalPosition, cylinder2LocalPos) < 0.0009 || (birdLocalPosition.x() < -0.02 && birdLocalPosition.y() < -0.02)){
+                desiredPosition = cylinder2Pos;
+                stiffness = 500;
                 currentPlateNumber = 2;
             }
-            // box 3
-            else if (birdLocalPosition.x() > 0.01 && birdLocalPosition.y() < -0.01){
-                desiredPosition = box3Pos;
-                stiffness = 2000;
-                currentPlateNumber = 3;
-            }
-            // Not on box
+            // Not on cylinder
             else {
-                desiredPosition = lastDesiredPosition;
-                stiffness = 2000;
+                desiredPosition = hapticDevicePosition;
+                stiffness = 250;
                 currentPlateNumber = -1;
             }
         }
@@ -657,26 +671,104 @@ void updateHaptics(void* shared_data)
             stiffness = 250;
         }
 
-
-        lastDesiredPosition = desiredPosition;
+        if (bIsCalibrationMode){
+            // Set Falcon to Origin
+            desiredPosition.x(0);
+            desiredPosition.y(0);
+            desiredPosition.z(0);
+            stiffness = 1000;
+            CalibrationCorrection += birdLocalPosition;
+        }
 
         // desired orientation
         cMatrix3d desiredRotation;
         desiredRotation.identity();
         
-        loopcount=0;
+        // variables for forces
+        cVector3d force (0,0,0);
+        cVector3d torque (0,0,0);
+        double gripperForce = 0.0;
 
-        cVector3d displacement = (desiredPosition - position);
+        if (true)    //isSame(prev_stiffness,stiffness)
+        {
+	    	//std::cout<<"add"<<std::endl;
+	    	loopcount=0;
+	        prev_stiffness=stiffness;
+	        // forceField = stiffness * (desiredPosition - position);
+            // Zhian Li, add horizontal force limit
+            cVector3d displacement = (desiredPosition - position);
+            /* avoid vibration
+            if (displacement.x() < 0.005 && displacement.x() > -0.005){
+                displacement.x(0);
+            }
+            if (displacement.y() < 0.005 && displacement.y() > -0.005){
+                displacement.y(0);
+            }
+            if (displacement.z() < 0.005 && displacement.z() > -0.005){
+                displacement.z(0);
+            }
+            */
+            forceField = cVector3d(stiffness * displacement.x(), stiffness * displacement.y() * 0.1,  stiffness * displacement.z() * 0.1);
+            /*
+            double horizontalForceLimit = 2.0; // n/m
+            if (forceField.y() > horizontalForceLimit){
+                forceField.y(horizontalForceLimit);
+            }
+            else if (forceField.y() < -horizontalForceLimit){
+                forceField.y(-horizontalForceLimit);
+            }
+            if (forceField.z() > horizontalForceLimit){
+                forceField.z(horizontalForceLimit);
+            }
+            else if (forceField.z() < -horizontalForceLimit){
+                forceField.z(-horizontalForceLimit);
+            }
+            */
+            force.add(gravityCorrection);
+            force.add(forceField);
+	        
+	        //prev_stiffness=stiffness;
+	   		hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
+		}    
+	    else
+	    {
+	    	loopcount++;
+	    	if (loopcount==1){
+	    		add= (stiffness-prev_stiffness)/200.0;
+	    		//std::cout<<"qqqqqqqqqqqqqqqqqqq: "<<stiffness<<"   "<<prev_stiffness<<"   "<<add<<endl;
 
-        forceField = cVector3d(stiffness * displacement.x(), stiffness * displacement.y() * 0.05, stiffness * displacement.z() * 0.05);
+	    	}
+	    	//double add_stiff=0.0;
+	    	force.add(gravityCorrection);
+	    	//for (int i=0;i<5;i++){
+	    		//add_stiff=add_stiff+add;
+	    		forceField = (prev_stiffness+add) * (desiredPosition - position);
 
-        force.add(gravityCorrection);
-        force.add(forceField);
-            
+	    		force.add(forceField);
+	    		//std::cout<<"hereeee: "<<"add" <<add <<" pre "<<prev_stiffness <<" sum "<<prev_stiffness+add<< " goal: "<<stiffness<<endl;
+	    		
+	    		//std::cout<<"hereeee: "<<"add" <<add<<"    "<<prev_stiffness+add<<endl; 
+	    		prev_stiffness=prev_stiffness+add;
+	    		//if (isSame(prev_stiffness,stiffness))  std::cout<<"yeeeeessssssss"<<std::endl;
+				hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);	
+	    	//}
+	    }
+
+		
+        // signal frequency counter
+        //if (stiffness<300){
+        //	        desiredPosition.set(0.03, 0.0, 0.0);
+
+        //}
+        /*
+        forceField = stiffness * (desiredPosition - position);
+		force.add(forceField);
+        cVector3d gravityCorrection (3.5, 0.0, -2.5);
         hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
-
+*/
    		freqCounterHaptics.signal(1);
     }
+    //freqCounterHaptics.signal(1);
     
     // exit haptics thread
     simulationFinished = true;

@@ -290,35 +290,113 @@ int main(int argc, char* argv[])
     birdSphere->m_material->setStiffness(0.4 * maxStiffness);
 
     ////////////////////////////////////////////////////////////////////////////
-    // SHAPE - BOX 0, BOX 1, BOX 2, BOX 3
+    // SHAPE - CYLINDER 0
     ////////////////////////////////////////////////////////////////////////////
 
-    std::vector<cShapeBox*> boxes {box0, box1, box2, box3};
-    std::vector<cVector3d> box_positions{
-        cVector3d(0.03, 0.03, -0.025),
-        cVector3d(-0.03, 0.03, -0.025),
-        cVector3d(-0.03, -0.03, -0.025),
-        cVector3d(0.03, -0.03, -0.025)
-    };
+    // create a cylinder
+    cylinder0 = new cShapeCylinder(0.03, 0.03, 0.05);
+    world->addChild(cylinder0);
 
-    for (int i = 0; i < boxes.size(); i++){
-        boxes[i] = new cShapeBox(0.05, 0.05, 0.05);
-        world->addChild(boxes[i]);
+    // set position and orientation
+    cylinder0->setLocalPos(0.03, -0.0, -0.05);
+    // cylinder->rotateAboutGlobalAxisDeg(cVector3d(1.0, 0.0, 0.0), 90);
 
-        // set position and orientation
-        boxes[i]->setLocalPos(box_positions[i]);
-        boxes[i]->m_material->setYellowGold();
+    // set material color
+    cylinder0->m_material->setBlueCornflower();
 
-        boxes[i]->createEffectSurface();
-        boxes[i]->m_material->setStiffness(maxStiffness);
-    }
-    
-    // save pointers to global variables
-    box0 = boxes[0];
-    box1 = boxes[1];
-    box2 = boxes[2];
-    box3 = boxes[3];
+    // create haptic effect and set properties
+    cylinder0->createEffectSurface();
+    cylinder0->m_material->setStiffness(maxStiffness);
 
+    ////////////////////////////////////////////////////////////////////////////
+    // SHAPE - CYLINDER 1
+    ////////////////////////////////////////////////////////////////////////////
+
+    // create a cylinder
+    cylinder1 = new cShapeCylinder(0.03, 0.03, 0.05);
+    world->addChild(cylinder1);
+
+    // set position and orientation
+    cylinder1->setLocalPos(-0.030, 0.034, -0.05);
+    // cylinder->rotateAboutGlobalAxisDeg(cVector3d(1.0, 0.0, 0.0), 90);
+
+    // set material color
+    cylinder1->m_material->setYellowGold();
+
+    // create haptic effect and set properties
+    cylinder1->createEffectSurface();
+    cylinder1->m_material->setStiffness(maxStiffness);
+
+    ////////////////////////////////////////////////////////////////////////////
+    // SHAPE - CYLINDER 2
+    ////////////////////////////////////////////////////////////////////////////
+
+    // create a cylinder
+    cylinder2 = new cShapeCylinder(0.03, 0.03, 0.05);
+    world->addChild(cylinder2);
+
+    // set position and orientation
+    cylinder2->setLocalPos(-0.030, -0.034, -0.05);
+    // cylinder->rotateAboutGlobalAxisDeg(cVector3d(1.0, 0.0, 0.0), 90);
+
+    // set material color
+    cylinder2->m_material-> setPurpleViolet();
+
+    // create haptic effect and set properties
+    cylinder2->createEffectSurface();
+    cylinder2->m_material->setStiffness(maxStiffness);
+
+    //--------------------------------------------------------------------------
+    // CREATE Pentagon
+    //--------------------------------------------------------------------------
+
+    /*
+    // create a virtual mesh
+    object = new cMesh();
+
+    // add object to world
+    world->addChild(object);
+
+    // set the position of the object at the center of the world
+    object->setLocalPos(0.0, 0.0, 0.0);
+
+    // Since we want to see our polygons from both sides, we disable culling.
+    object->setUseCulling(false);
+
+    cColorf color;
+    color.setRed();
+
+    cVector3d p0 = cVector3d(0.0, -0.07, -0.10);
+    cVector3d p1 = cVector3d(0.0, -0.1, 0.03);
+    cVector3d p2 = cVector3d(0.0, 0.0, 0.1);
+    cVector3d p3 = cVector3d(0.0, 0.1, 0.03);
+    cVector3d p4 = cVector3d(0.0, 0.07, -0.1);
+
+    int vertex0 = object->newVertex();
+    int vertex1 = object->newVertex();
+    int vertex2 = object->newVertex();
+    int vertex3 = object->newVertex();
+    int vertex4 = object->newVertex();
+
+    // set position of each vertex
+    object->m_vertices->setLocalPos(vertex0, p0);
+    object->m_vertices->setLocalPos(vertex1, p1);
+    object->m_vertices->setLocalPos(vertex2, p2);
+    object->m_vertices->setLocalPos(vertex3, p3);
+    object->m_vertices->setLocalPos(vertex4, p4);
+
+    // assign color to each vertex
+    object->m_vertices->setColor(vertex0, color);
+    object->m_vertices->setColor(vertex1, color);
+    object->m_vertices->setColor(vertex2, color);
+    object->m_vertices->setColor(vertex3, color);
+    object->m_vertices->setColor(vertex4, color);
+
+    // create new triangle from vertices
+    object->newTriangle(vertex0, vertex1, vertex2);
+    object->newTriangle(vertex0, vertex2, vertex3);
+    object->newTriangle(vertex0, vertex3, vertex4);
+    */
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
