@@ -48,7 +48,9 @@ EAppMode g_eAppMode = AM_DEMO;
 
 const string g_programName = "HelloEposCmd";
 
-enum Color { RED, BLUE, YELLOW };
+volatile int TargetFace = 0;
+
+enum Color { RED, YELLOW, BLUE };
 
 #ifndef MMC_SUCCESS
 	#define MMC_SUCCESS 0
@@ -278,7 +280,7 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 	}
 	else
 	{
-		list<long> positionList;
+		// list<long> positionList;
 
 		// Set Velocity and Acceleration
 		unsigned int pProfileVelocity = 1000, pProfileAcceleration = 1000, pProfileDeceleration = 1000;
@@ -290,44 +292,38 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 
 		std::cout << "Velocity " << pProfileVelocity << " Acceleration " << pProfileAcceleration << " Deceleration " << pProfileDeceleration << std::endl;
 
-		std::vector<Color> colorVector;
-
 		// Color Name and Position
-		std::vector<std::string> colorName = { "RED", "BLUE", "YELLOW" };
-		std::vector<long> colorPosition = { 0, 12000, 6000 };
-
-		// Color
-		colorVector.push_back(YELLOW); 
-		colorVector.push_back(BLUE);
-		colorVector.push_back(YELLOW);
-		colorVector.push_back(RED); 
-		colorVector.push_back(YELLOW);
-		colorVector.push_back(RED);
-		colorVector.push_back(YELLOW); 
-		colorVector.push_back(BLUE);
-		colorVector.push_back(RED);
-
-		// Iterate from position 1 since position 0 is considered start position
-		for (auto color : colorVector){
-			positionList.push_back(colorPosition[color]);
-			std::cout << "Add position " << colorPosition[color] << std::endl;
-		}
-
+		std::vector<std::string> colorName = { "RED", "YELLOW", "BLUE"};
 
 		// Used for printing color with current position
 		int positionIndex = 0;
 
-		for(list<long>::iterator it = positionList.begin(); it !=positionList.end(); it++)
+		int CurrentFace = TargetFace; // Current = Target = 0
+		while (true)
 		{
-			long targetPosition = (*it);
+			// Sleep for 0.1 second if no need to rotate
+			if (TargetFace == CurrentFace){
+				nanosleep((const struct timespec[]){{0, 100000000L}}, NULL); 
+				continue;
+			}
+
+			long targetPosition = 0;
+			
+			if (TargetFace == 0 || TargetFace == 1 || TargetFace == 2){
+				targetPosition = (long) TargetFace * 6000;
+			}
+			else{
+				std::cout << "Invalid Face Index " << TargetFace << std::endl;
+			}
+
 			stringstream msg;
 
 			int currentPosition;
 
 			VCS_GetPositionIs(p_DeviceHandle, p_usNodeId, &currentPosition, &p_rlErrorCode);
 
-			msg << "move to position = " << targetPosition << " with color " << colorName[colorVector[positionIndex]] << " from " << currentPosition << ", node = " << p_usNodeId;
-			LogInfo(msg.str());
+			msg << "move to position = " << targetPosition << " with color " << colorName[TargetFace] << " from " << currentPosition << ", node = " << p_usNodeId;
+			// LogInfo(msg.str());
 			
 			// Absolute position, 
 			bool bIsAbsolutePosition = true;
@@ -340,30 +336,18 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			}
 
 			// 2 seconds sleep, waiting until operation finishes
-			sleep(2);
-
-			/*
-			// halt position movement after each move
-			if(lResult == MMC_SUCCESS)
-			{
-				std::cout << "halt position movement";
-
-				if(VCS_HaltPositionMovement(p_DeviceHandle, p_usNodeId, &p_rlErrorCode) == 0)
-				{
-					LogError("VCS_HaltPositionMovement", lResult, p_rlErrorCode);
-					lResult = MMC_FAILED;
-				}
-			}
-			*/
+			sleep(1);
+			
 			// 0.5 second sleep
-			nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
+			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
 
 			VCS_GetPositionIs(p_DeviceHandle, p_usNodeId, &currentPosition, &p_rlErrorCode);
 
-			std::cout << " reached position " << currentPosition << " expected color is "<< colorName[colorVector[positionIndex]]<< std::endl;
+			// std::cout << " reached position " << currentPosition << " expected color is "<< colorName[TargetFace]<< std::endl;
+			CurrentFace = TargetFace;
 			positionIndex++;
 
-			sleep(1);
+			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
 
 			// Clear Error After Each Move
 			PrepareDemo(&p_rlErrorCode);

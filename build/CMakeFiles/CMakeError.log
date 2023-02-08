@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
+Change Dir: /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_818da/fast"
-/usr/bin/make -f CMakeFiles/cmTC_818da.dir/build.make CMakeFiles/cmTC_818da.dir/build
-make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_818da.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_818da.dir/CheckSymbolExists.c.o   -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_818da
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_818da.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_818da.dir/CheckSymbolExists.c.o  -o cmTC_818da 
-CMakeFiles/cmTC_818da.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_51fad/fast"
+/usr/bin/make -f CMakeFiles/cmTC_51fad.dir/build.make CMakeFiles/cmTC_51fad.dir/build
+make[1]: Entering directory '/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_51fad.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_51fad.dir/CheckSymbolExists.c.o   -c /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_51fad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51fad.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_51fad.dir/CheckSymbolExists.c.o  -o cmTC_51fad 
+CMakeFiles/cmTC_51fad.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_818da.dir/build.make:97: recipe for target 'cmTC_818da' failed
-make[1]: *** [cmTC_818da] Error 1
-make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_818da/fast' failed
-make: *** [cmTC_818da/fast] Error 2
+CMakeFiles/cmTC_51fad.dir/build.make:97: recipe for target 'cmTC_51fad' failed
+make[1]: *** [cmTC_51fad] Error 1
+make[1]: Leaving directory '/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_51fad/fast' failed
+make: *** [cmTC_51fad/fast] Error 2
 
-File /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
+Change Dir: /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c84e4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c84e4.dir/build.make CMakeFiles/cmTC_c84e4.dir/build
-make[1]: Entering directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c84e4.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c84e4.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c84e4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c84e4.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_c84e4.dir/CheckFunctionExists.c.o  -o cmTC_c84e4 -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_c5617/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c5617.dir/build.make CMakeFiles/cmTC_c5617.dir/build
+make[1]: Entering directory '/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c5617.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c5617.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c5617
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5617.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_c5617.dir/CheckFunctionExists.c.o  -o cmTC_c5617 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_c84e4.dir/build.make:97: recipe for target 'cmTC_c84e4' failed
-make[1]: *** [cmTC_c84e4] Error 1
-make[1]: Leaving directory '/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_c84e4/fast' failed
-make: *** [cmTC_c84e4/fast] Error 2
+CMakeFiles/cmTC_c5617.dir/build.make:97: recipe for target 'cmTC_c5617' failed
+make[1]: *** [cmTC_c5617] Error 1
+make[1]: Leaving directory '/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_c5617/fast' failed
+make: *** [cmTC_c5617/fast] Error 2
 
 

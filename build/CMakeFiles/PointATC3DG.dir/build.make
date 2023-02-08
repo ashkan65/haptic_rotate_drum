@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli
+CMAKE_SOURCE_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build
+CMAKE_BINARY_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/PointATC3DG.dir/depend.make
@@ -59,7 +59,7 @@ include CMakeFiles/PointATC3DG.dir/flags.make
 
 CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o: CMakeFiles/PointATC3DG.dir/flags.make
 CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o: /home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o -c /home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp
 
 CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.i: cmake_force
@@ -91,7 +91,7 @@ PointATC3DG_EXTERNAL_OBJECTS =
 libPointATC3DG.a: CMakeFiles/PointATC3DG.dir/home/naghmehz/Documents/ATC3DGTracker/lib/PointATC3DG.cpp.o
 libPointATC3DG.a: CMakeFiles/PointATC3DG.dir/build.make
 libPointATC3DG.a: CMakeFiles/PointATC3DG.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libPointATC3DG.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libPointATC3DG.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/PointATC3DG.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PointATC3DG.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/PointATC3DG.dir/clean:
 .PHONY : CMakeFiles/PointATC3DG.dir/clean
 
 CMakeFiles/PointATC3DG.dir/depend:
-	cd /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/PointATC3DG.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/PointATC3DG.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/PointATC3DG.dir/depend
 

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.cpp" "/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/simple826.dir/simple826.cpp.o"
+  "/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.cpp" "/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/simple826.dir/simple826.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -33,6 +33,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/naghmehz/Documents/chai3d-3.2.0/external/theoraplayer/src/Theora"
   "/home/naghmehz/Documents/ATC3DGTracker/lib"
   "/home/naghmehz/Documents/sensoray-sdk/driver"
+  "/home/naghmehz/Documents/EPOS_Linux_Library/lib"
   )
 
 # Targets to which this target links.

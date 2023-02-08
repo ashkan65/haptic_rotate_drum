@@ -58,12 +58,14 @@
 #include <fstream>
 #include <string>
 #include <time.h> 
-
+#include "EposCmd.hpp"
 using namespace chai3d;
 using namespace std;
 //------------------------------------------------------------------------------
 //typedef Eigen::Matrix<float, 7, 1> vector7f;
 //typedef Eigen::Matrix<float, 8, 1> vector8f;
+void runEpos(void *epos_position);
+
 void readFTdata(void *shared_data);
 ForceSensor Force;
 
@@ -77,6 +79,8 @@ double baseX, baseY, baseZ, baseAzimuth, baseElevation, baseRoll; // Tracker dat
 cVector3d birdLocalPosition; // Position of bird in the local (rendered coordinate)
 
 int numsen=bird.getNumberOfSensors();
+//----------------------------------------------------------------------
+// EPOS
 
 //------------------------------------------------------------------------------
 // GENERAL SETTINGS
@@ -160,6 +164,7 @@ cFrequencyCounter freqCounterHaptics;
 // haptic thread
 cThread* hapticsThread;
 cThread* forceThread;
+cThread* EposThread;
 
 // a handle to window display context
 GLFWwindow* window = NULL;
@@ -219,9 +224,14 @@ const cVector3d OriginCorrection = cVector3d(- 0.27, 0.025, 0.32);
 cVector3d CalibrationCorrection = cVector3d(0, 0, 0.16);
 bool bIsCalibrationMode = true;
 int currentPlateNumber = -1;
-// a virtual mesh like object for pentagon
-// cMesh* object;
 
+// Variable list for stiffness and face of different blocks
+int stiffnessList[4] = {2000, 2000, 2000, 2000};
+
+
+int faceList[4] = {1, 1, 0, 0};
+int roundComplete = 0;
+int recordHeight = 0;
 // Boxes for different stiffness
 
 //------------------------------------------------------------------------------
@@ -307,7 +317,7 @@ void updateGraphics(void)
     labelRates->setLocalPos((int)(0.5 * (width - labelRates->getWidth())), 15);
 
     // bird local posion updated in haptic thread
-    birdSphere->setLocalPos(0.5 * birdLocalPosition);
+    birdSphere->setLocalPos(birdLocalPosition);
 
     
     if (currentPlateNumber >= 0){
@@ -366,7 +376,6 @@ void updateGraphics(void)
 
 void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, int a_mods)
 {	
-	//rand() % 2+ 1;
     // filter calls that only include a key press
     if ((a_action != GLFW_PRESS) && (a_action != GLFW_REPEAT))
     {
@@ -379,123 +388,55 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
         glfwSetWindowShouldClose(a_window, GLFW_TRUE);
     }
 
-    /////////////////PEST
-    // Zhian Li: Remove Stiffness
-    else if (a_key == GLFW_KEY_P)
-    {
-       stiffness = 0;
-        
-    }
+    // Zhian Li: Set Calibration
     else if (a_key == GLFW_KEY_C)
     {
        bIsCalibrationMode = true;
+       roundComplete = 0;
     }
+
     else if (a_key == GLFW_KEY_V)
     {
        bIsCalibrationMode = false;
+       roundComplete = 0;
     }
-    else if (a_key == GLFW_KEY_N)
+
+    else if (a_key == GLFW_KEY_1)
     {
-    	if (bool_random ==0)
-    	{
-    		stiffness=Stiffness(first_stimulus); //2200   
-            std::cout<<"first "<< first_stimulus <<std::endl;
-    	}
-    	else{
-    		stiffness=Stiffness(second_stimulus);   //200 
-            std::cout<<"second: "<< second_stimulus<<std::endl;
-            //std::cout<<"whaaaaaaaaaaat: "<<stiffness<<endl;
-    	}
-        
+        if (!bIsCalibrationMode){
+            std::cout << "user selected block 0" << std::endl;
+        }
+        roundComplete = -1;
     }
-    else if (a_key == GLFW_KEY_M)
+
+    else if (a_key == GLFW_KEY_2)
     {
-    	if (bool_random ==0)
-        {
-        	stiffness=Stiffness(second_stimulus);   //200 
-            std::cout<<"second: "<< second_stimulus<<std::endl;
-            //std::cout<<"stiff: "<<stiffness<<endl;
-    		
-    	}
-    	else{
-    		stiffness=Stiffness(first_stimulus); //2200   
-            std::cout<<"first "<< first_stimulus <<std::endl;
-            //std::cout<<"stiff: "<<stiffness<<endl;
-    	}
+        if (!bIsCalibrationMode){
+            std::cout << "user selected block 1" << std::endl;
+        }
+        roundComplete = -1;
     }
-    else if (a_key == GLFW_KEY_J)
+
+    else if (a_key == GLFW_KEY_3)
     {
-    	if ((bool_random ==0)){
-    		std::cout<<"correct!"<<std::endl;
-    		new_stimulus= staircase.NextStimulus(1);
-    		second_stimulus = new_stimulus;
-            //second_stimulus = max_stiffness-new_stimulus;//max-new>max
-    	    std::cout<<"next stimulus1: "<<new_stimulus<<"  "<<second_stimulus<<std::endl;
-    	    //std::cout<<"first "<< first_stimulus <<std::endl;
-    	    //std::cout<<"second: "<< second_stimulus<<std::endl;
-    	    if (staircase.flag==false) 
-    	    {
-    	    	std::cout<<"step"<<endl;
-    	    	exit(-1);
-    	    }
-    	   // terminate();
-    	}
-    	else{
-    		std::cout<<"not correct!"<<std::endl;
-    		new_stimulus= staircase.NextStimulus(0);
-    		second_stimulus = new_stimulus;
-            //second_stimulus = max_stiffness-new_stimulus;
-	        std::cout<<"next stimulus0: "<<new_stimulus<<"  "<<second_stimulus<<std::endl;
-	        //std::cout<<"first "<< first_stimulus <<std::endl;
-    	    //std::cout<<"second: "<< second_stimulus<<std::endl;
-    	    if (staircase.flag==false) 
-    	    {
-    	    	std::cout<<"step"<<endl;
-    	        exit(-1);
-    	    }
-    	    //terminate();
-    	}
-    	//second_stimulus = Stiffness(max_stiffness-p0);
-        //std::cout<<"next: "<<bool_random<<std::endl;
-    	bool_random=rand() % 2;
-    	
+        if (!bIsCalibrationMode){
+            std::cout << "user selected block 2" << std::endl;
+        }
+        roundComplete = -1;
     }
-    else if (a_key == GLFW_KEY_K)
+
+    else if (a_key == GLFW_KEY_4)
     {
-    	//bool_random=rand() % 2;    	//second_stimulus = Stiffness(max_stiffness-p1);
-    	if ((bool_random ==1)){
-    		std::cout<<"then correct!"<<std::endl;
-    		new_stimulus= staircase.NextStimulus(1);
-    		second_stimulus = new_stimulus;
-            //second_stimulus = max_stiffness-new_stimulus;
-    	    std::cout<<"next stimulus1: "<<new_stimulus<<"  "<<second_stimulus<<std::endl;
-    	    //std::cout<<"first "<< first_stimulus <<std::endl;
-    	    //std::cout<<"second: "<< second_stimulus<<std::endl;
-            if (staircase.flag==false) 
-            {
-                std::cout<<"step"<<endl;
-                exit(-1);
-            }
-    	    //terminate();
-    	}
-    	else{
-    		std::cout<<"not correct!"<<std::endl;
-    		new_stimulus= staircase.NextStimulus(0);
-    		second_stimulus =  new_stimulus;
-            //second_stimulus = max_stiffness-new_stimulus;
-	        std::cout<<"next stimulus0: "<<new_stimulus<<"  "<<second_stimulus<<std::endl;
-	        //std::cout<<"first "<< first_stimulus <<std::endl;
-    	    //std::cout<<"second: "<< second_stimulus<<std::endl;
-            if (staircase.flag==false) 
-            {
-                std::cout<<"step"<<endl;
-                exit(-1);
-            }
-        //std::cout<<"nextttt: "<<bool_random<<std::endl;
-    	
-   	 	}
-    bool_random=rand() % 2;
-	}
+        if (!bIsCalibrationMode){
+            std::cout << "user selected block 3" << std::endl;
+        }
+        roundComplete = 1;
+    }
+
+    else if (a_key == GLFW_KEY_R)
+    {
+       recordHeight = 1;
+    }
 
 }
 
@@ -514,10 +455,13 @@ void updateHaptics(void* shared_data)
     double prev_stiffness=0.0;
     cVector3d forceField (0.0,0.0,0.0);
     cVector3d gravityCorrection (3.5, 0.0, -2.5);
-	double add=0;
+    double add=0;
     // main haptic simulation loop
     int loopcount=0;
     cVector3d lastDesiredPosition(0.01, 0.0, 0.0);
+    // Placeholder for stiffness and face each round
+
+
     while(simulationRunning)
     {
         /////////////////////////////////////////////////////////////////////
@@ -599,7 +543,8 @@ void updateHaptics(void* shared_data)
 
             cVector3d displacement = (desiredPosition - position);
 
-            forceField = cVector3d(stiffness * displacement.x(), stiffness * displacement.y() * 0.1, stiffness * displacement.z() * 0.1);
+            double corrected_stiffness = Stiffness(stiffness);
+            forceField = cVector3d(corrected_stiffness * displacement.x(), corrected_stiffness * displacement.y() * 0.1, corrected_stiffness * displacement.z() * 0.1);
 
             force.add(gravityCorrection);
             force.add(forceField);
@@ -621,42 +566,45 @@ void updateHaptics(void* shared_data)
         // If tracker is above a platform, we think the tracker is in workspace 
         // and start moving the haptic device 
         
-        if (!bIsCalibrationMode){ 
+        if (abs(birdLocalPosition.x()) < 0.1 && abs(birdLocalPosition.y()) < 0.1) // 
+        {
             // box 0
             if (birdLocalPosition.x() > 0.01 && birdLocalPosition.y() > 0.01){
                 desiredPosition = box0Pos;
-                stiffness = 2000;
                 currentPlateNumber = 0;
             }
             // box 1
             else if (birdLocalPosition.x() < -0.01 && birdLocalPosition.y() > 0.01){
                 desiredPosition = box1Pos;
-                stiffness = 2000;
                 currentPlateNumber = 1;
             }
             // box 2
             else if (birdLocalPosition.x() < -0.01 && birdLocalPosition.y() < -0.01){
                 desiredPosition = box2Pos;
-                stiffness = 2000;
                 currentPlateNumber = 2;
             }
             // box 3
             else if (birdLocalPosition.x() > 0.01 && birdLocalPosition.y() < -0.01){
                 desiredPosition = box3Pos;
-                stiffness = 2000;
                 currentPlateNumber = 3;
             }
             // Not on box
             else {
                 desiredPosition = lastDesiredPosition;
-                stiffness = 2000;
                 currentPlateNumber = -1;
             }
         }
-        else{
-            stiffness = 250;
+        // Not on box
+        else {
+            desiredPosition = lastDesiredPosition;
+            currentPlateNumber = -1;
         }
-
+        
+        
+        if (currentPlateNumber >= 0){
+            stiffness = Stiffness((double) stiffnessList[currentPlateNumber]);
+            TargetFace = faceList[currentPlateNumber];
+        }
 
         lastDesiredPosition = desiredPosition;
 
@@ -668,14 +616,29 @@ void updateHaptics(void* shared_data)
 
         cVector3d displacement = (desiredPosition - position);
 
-        forceField = cVector3d(stiffness * displacement.x(), stiffness * displacement.y() * 0.05, stiffness * displacement.z() * 0.05);
-
+        // Limit force
+        double corrected_stiffness = Stiffness(stiffness);
+        forceField = cVector3d(corrected_stiffness * displacement.x(), corrected_stiffness * displacement.y() * 0.02, corrected_stiffness * displacement.z() * 0.2);
+        
+        if (forceField.y() > 0.2){
+            forceField.y(2);
+        }
+        if (forceField.y() < -0.2){
+            forceField.y(-2);
+        }
+        if (forceField.z() > 0.2){
+            forceField.z(2);
+        }
+        if (forceField.z() < -0.2){
+            forceField.z(-2);
+        }
+        
         force.add(gravityCorrection);
         force.add(forceField);
             
         hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
 
-   		freqCounterHaptics.signal(1);
+        freqCounterHaptics.signal(1);
     }
     
     // exit haptics thread
@@ -712,15 +675,15 @@ void readFTdata(void *shared_data)
     //time_t ta=time(NULL);
     //time_t tb=time(NULL);
 
-    auto t1 = std::chrono::high_resolution_clock::now();
+    auto t0 = std::chrono::high_resolution_clock::now();
     int output_count = 0;
 	while (!exitKey) {
         bird.getCoordinatesAngles( 0, dX, dY, dZ, dAzimuth, dElevation, dRoll );
         auto t2 = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t1 ).count();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t0 ).count();
         FT_data = Force.GetCurrentFT(numSample) ;
         *(Vector6FT*)(shared_data) = FT_data;
-        myfile <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<stiffness<<" "<<dX<< " "<<dY<< " "<<dZ<< " "<<dAzimuth<< " "<<dElevation<< " "<<dRoll<< " "<<duration<<" "<<" "<<first_stimulus<<" "<<second_stimulus<<"\n";
+        // myfile <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<stiffness<<" "<<dX<< " "<<dY<< " "<<dZ<< " "<<dAzimuth<< " "<<dElevation<< " "<<dRoll<< " "<<duration<<" "<<" "<<first_stimulus<<" "<<second_stimulus<<"\n";
         //myfile2 <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<Kp<<" "<<dX<< " "<<dY<< " "<<dZ<< " "<<dAzimuth<< " "<<dElevation<< " "<<dRoll<< " "<<duration<<"\n";
         //std::cout << "\rX: " << dX << ", \tY: " << dY << ", \tZ: " << dZ;
         //std::cout << ", \tA: " << dAzimuth << ", \tE: " << dElevation << ", \tR: " << dRoll << std::endl;
@@ -728,9 +691,25 @@ void readFTdata(void *shared_data)
         // double baseX, baseY, baseZ, baseAzimuth, baseElevation, baseRoll;
         bird.getCoordinatesAngles( 1, baseX, baseY, baseZ, baseAzimuth, baseElevation, baseRoll );
         if (output_count % 1000 == 0){
-            std::cout << birdLocalPosition.x() << " " << birdLocalPosition.y() << " "<< birdLocalPosition.z() << " "<<dAzimuth<< " "<<dElevation<< " "<< dRoll << std::endl;
+            // std::cout << birdLocalPosition.x() << " " << birdLocalPosition.y() << " "<< birdLocalPosition.z() << " "<<dAzimuth<< " "<<dElevation<< " "<< dRoll << std::endl;
         }
-        
+
+        if (bIsCalibrationMode){
+            t0 = std::chrono::high_resolution_clock::now();
+        }
+        else{
+            if (roundComplete){
+                bIsCalibrationMode = true;
+                roundComplete = 0;
+                std::cout << "Time consumed: " << duration / 1000000  << " seconds" << std::endl;
+            }
+        }
+
+        if (recordHeight){
+            std::cout << "NO: " << currentPlateNumber << " Stiffness: " << stiffness << " Tracker: " << (-dZ / InchPerMeter) * 100 << " Encoder: " << position(0) * 100 << std::endl;
+            myfile << "NO: " << currentPlateNumber << " Stiffness: " << stiffness << " Tracker: " << (-dZ / InchPerMeter) * 100 << " Encoder: " << position(0) * 100  << std::endl;
+            recordHeight = 0;
+        }
     }
 
     /*
@@ -772,6 +751,40 @@ double Stiffness(double k){
     return stiffness;
 }
 
+void runEpos(void *shared_data){
+    int lResult = MMC_FAILED;
+    unsigned int ulErrorCode = 0;
+
+    PrintHeader();
+
+    SetDefaultParameters();
+
+    PrintSettings();
+
+    if((lResult = OpenDevice(&ulErrorCode))!=MMC_SUCCESS)
+    {
+        LogError("OpenDevice", lResult, ulErrorCode);
+        //return lResult;
+    }
+
+    if((lResult = PrepareDemo(&ulErrorCode))!=MMC_SUCCESS)
+    {
+        LogError("PrepareDemo", lResult, ulErrorCode);
+        //return lResult;
+    }
+
+    if((lResult = Demo(&ulErrorCode))!=MMC_SUCCESS)
+    {
+        LogError("Demo", lResult, ulErrorCode);
+        // return lResult;
+    }
+
+    if((lResult = CloseDevice(&ulErrorCode))!=MMC_SUCCESS)
+    {
+        LogError("CloseDevice", lResult, ulErrorCode);
+        //  return lResult;
+    }
+}
 
 void close(void)
 {
@@ -787,6 +800,7 @@ void close(void)
     // delete resources
     delete hapticsThread;
     delete forceThread;
+    delete EposThread;
     delete world;
     delete handler;
 }

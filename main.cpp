@@ -307,7 +307,7 @@ int main(int argc, char* argv[])
 
         // set position and orientation
         boxes[i]->setLocalPos(box_positions[i]);
-        boxes[i]->m_material->setYellowGold();
+        boxes[i]->m_material->setBlueSteel();
 
         boxes[i]->createEffectSurface();
         boxes[i]->m_material->setStiffness(maxStiffness);
@@ -319,6 +319,47 @@ int main(int argc, char* argv[])
     box2 = boxes[2];
     box3 = boxes[3];
 
+    cShapeBox* wall0 = new cShapeBox(0.11, 0.01, 0.08);
+    world->addChild(wall0);
+
+    // set position and orientation
+    wall0->setLocalPos(0, 0, -0.025);
+    wall0->m_material->setYellowGold();
+
+    cShapeBox* wall1 = new cShapeBox(0.01, 0.11, 0.08);
+    world->addChild(wall1);
+
+    // set position and orientation
+    wall1->setLocalPos(0, 0, -0.025);
+    wall1->m_material->setYellowGold();
+
+    cShapeBox* wall2 = new cShapeBox(0.13, 0.01, 0.08);
+    world->addChild(wall2);
+
+    // set position and orientation
+    wall2->setLocalPos(0, 0.06, -0.025);
+    wall2->m_material->setYellowGold();
+
+    cShapeBox* wall3 = new cShapeBox(0.13, 0.01, 0.08);
+    world->addChild(wall3);
+
+    // set position and orientation
+    wall3->setLocalPos(0, -0.06, -0.025);
+    wall3->m_material->setYellowGold();
+
+    cShapeBox* wall4 = new cShapeBox(0.01, 0.13, 0.08);
+    world->addChild(wall4);
+
+    // set position and orientation
+    wall4->setLocalPos(0.06, 0, -0.025);
+    wall4->m_material->setYellowGold();
+
+    cShapeBox* wall5 = new cShapeBox(0.01, 0.13, 0.08);
+    world->addChild(wall5);
+
+    // set position and orientation
+    wall5->setLocalPos(-0.06, 0, -0.025);
+    wall5->m_material->setYellowGold();
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
@@ -338,18 +379,23 @@ int main(int argc, char* argv[])
     // create a label to display the haptic and graphic rate of the simulation
     labelRates = new cLabel(font);
     camera->m_frontLayer->addChild(labelRates);
+
     //--------------------------------------------------------------------------
     // START THREADS
     //--------------------------------------------------------------------------
-    Vector6FT  shared_data;
+    Vector6FT shared_data;
     void *a;
     a = &shared_data;
+
     // create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     forceThread = new cThread();
+    EposThread = new cThread();
     //time_t ta=time(NULL);
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS, a);
     forceThread->start(readFTdata , CTHREAD_PRIORITY_HAPTICS, a);
+    EposThread->start(runEpos , CTHREAD_PRIORITY_HAPTICS, a);
+
     //time_t tb=time(NULL);
     //std::cout << rec_count << " samples collected" << std::endl;
     //std::cout << tb-ta << " seconds elapsed" << std::endl;
@@ -357,8 +403,6 @@ int main(int argc, char* argv[])
     // exit
     // setup callback when application exits
     atexit(close);
-
-
 
     //--------------------------------------------------------------------------
     // MAIN GRAPHIC LOOP

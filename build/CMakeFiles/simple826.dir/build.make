@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli
+CMAKE_SOURCE_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build
+CMAKE_BINARY_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/simple826.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/simple826.dir/flags.make
 
 CMakeFiles/simple826.dir/simple826.cpp.o: CMakeFiles/simple826.dir/flags.make
 CMakeFiles/simple826.dir/simple826.cpp.o: ../simple826.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simple826.dir/simple826.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simple826.dir/simple826.cpp.o -c /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simple826.dir/simple826.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simple826.dir/simple826.cpp.o -c /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.cpp
 
 CMakeFiles/simple826.dir/simple826.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/simple826.dir/simple826.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.cpp > CMakeFiles/simple826.dir/simple826.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.cpp > CMakeFiles/simple826.dir/simple826.cpp.i
 
 CMakeFiles/simple826.dir/simple826.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/simple826.dir/simple826.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/simple826.cpp -o CMakeFiles/simple826.dir/simple826.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.cpp -o CMakeFiles/simple826.dir/simple826.cpp.s
 
 CMakeFiles/simple826.dir/simple826.cpp.o.requires:
 
@@ -91,7 +91,7 @@ simple826_EXTERNAL_OBJECTS =
 libsimple826.a: CMakeFiles/simple826.dir/simple826.cpp.o
 libsimple826.a: CMakeFiles/simple826.dir/build.make
 libsimple826.a: CMakeFiles/simple826.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libsimple826.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libsimple826.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/simple826.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/simple826.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/simple826.dir/clean:
 .PHONY : CMakeFiles/simple826.dir/clean
 
 CMakeFiles/simple826.dir/depend:
-	cd /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Downloads/Sensoray_CHAI3D-zhianli/build/CMakeFiles/simple826.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/simple826.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/simple826.dir/depend
 
