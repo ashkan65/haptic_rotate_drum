@@ -218,12 +218,14 @@ cShapeBox* box1;
 cShapeBox* box2;
 cShapeBox* box3;
 
-
 // a label to display the experiment related info
 cLabel* labelExperimentDisplay;
 
+// Widgets for the bitmaps on the side
 cBitmap* bitmapNumber1;
 cBitmap* bitmapNumber2;
+cBitmap* bitmapNumber3;
+cBitmap* bitmapNumber4;
 
 // Meter to Inch Conversion meter = inch / 39.37
 const double InchPerMeter = 39.37;
@@ -235,10 +237,12 @@ int currentPlateNumber = -1;
 // Variable list for stiffness and face of different blocks
 int stiffnessList[4] = {1000, 1200, 1600, 1800};
 
-
 int faceList[4] = {0, 2, 1, 0};
 int roundComplete = 0;
 int recordHeight = 0;
+
+// Stack for experiment2
+std::vector<int> gStack;
 // Boxes for different stiffness
 
 //------------------------------------------------------------------------------
@@ -384,8 +388,34 @@ void updateGraphics(void)
     if (err != GL_NO_ERROR) cout << "Error:  %s\n" << gluErrorString(err);
 }
 
-//------------------------------------------------------------------------------
+// Helper function to check if key is in the global stack
+bool boxInStack(int box){
+    for (int b : gStack){
+        if (box == b){
+            return true;
+        }
+    }
+    return false;
+}
 
+// 
+// Helper function to check if key is in the global stack
+bool resetBoxAndWidgetAndStack(){
+    bitmapNumber1->setTransparencyLevel(0);
+    bitmapNumber2->setTransparencyLevel(0);
+    bitmapNumber3->setTransparencyLevel(0);
+    bitmapNumber4->setTransparencyLevel(0);
+
+
+    box0->setShowEnabled(true);
+    box1->setShowEnabled(true);
+    box2->setShowEnabled(true);
+    box3->setShowEnabled(true);
+
+    gStack.clear();
+}
+
+//------------------------------------------------------------------------------
 void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, int a_mods)
 {	
     // filter calls that only include a key press
@@ -417,43 +447,97 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     {
         if (!bIsCalibrationMode){
             std::cout << "user selected block 1" << std::endl;
+            // Box is already in the stack
+            if (boxInStack(1)){
+                if (gStack[gStack.size() - 1] == 1){
+                    box0->setShowEnabled(true);
+                    gStack.pop_back();
+                    bitmapNumber1->setTransparencyLevel(0);
+                }
+            }
+            else{
+                box0->setShowEnabled(false);
+                gStack.push_back(1);
+                bitmapNumber1->setLocalPos(50, gStack.size() * 64, 0);
+                bitmapNumber1->setTransparencyLevel(1);
+            }
         }
-        roundComplete = 1;
-        box0->setShowEnabled(false);
-        bitmapNumber1->setTransparencyLevel(1);
     }
 
     else if (a_key == GLFW_KEY_2)
     {
         if (!bIsCalibrationMode){
             std::cout << "user selected block 2" << std::endl;
+            // Box is already in the stack
+            if (boxInStack(2)){
+                if (gStack[gStack.size() - 1] == 2){
+                    box1->setShowEnabled(true);
+                    gStack.pop_back();
+                    bitmapNumber2->setTransparencyLevel(0);
+                }
+            }
+            else{
+                box1->setShowEnabled(false);
+                gStack.push_back(2);
+                bitmapNumber2->setLocalPos(50, gStack.size() * 64, 0);
+                bitmapNumber2->setTransparencyLevel(1);
+            }
         }
-        roundComplete = 2;
-        box1->setShowEnabled(false);
-        bitmapNumber2->setTransparencyLevel(1);
     }
 
     else if (a_key == GLFW_KEY_3)
     {
         if (!bIsCalibrationMode){
             std::cout << "user selected block 3" << std::endl;
+            // Box is already in the stack
+            if (boxInStack(3)){
+                if (gStack[gStack.size() - 1] == 3){
+                    box2->setShowEnabled(true);
+                    gStack.pop_back();
+                    bitmapNumber3->setTransparencyLevel(0);
+                }
+            }
+            else{
+                box2->setShowEnabled(false);
+                gStack.push_back(3);
+                bitmapNumber3->setLocalPos(50, gStack.size() * 64, 0);
+                bitmapNumber3->setTransparencyLevel(1);
+            }
         }
-        roundComplete = 3;
-        box2->setShowEnabled(false);
     }
 
     else if (a_key == GLFW_KEY_4)
     {
         if (!bIsCalibrationMode){
             std::cout << "user selected block 4" << std::endl;
+            // Box is already in the stack
+            if (boxInStack(4)){
+                if (gStack[gStack.size() - 1] == 4){
+                    box3->setShowEnabled(true);
+                    gStack.pop_back();
+                    bitmapNumber4->setTransparencyLevel(0);
+                }
+            }
+            else{
+                box3->setShowEnabled(false);
+                gStack.push_back(4);
+                bitmapNumber4->setLocalPos(50, gStack.size() * 64, 0);
+                bitmapNumber4->setTransparencyLevel(1);
+            }
         }
-        roundComplete = 4;
-        box3->setShowEnabled(false);
     }
 
     else if (a_key == GLFW_KEY_R)
     {
        recordHeight = 1;
+    }
+
+    // Submit Results
+    else if (a_key == GLFW_KEY_ENTER)
+    {
+        if (gStack.size() == 4){
+            roundComplete = 42;
+        }
     }
 
 }
@@ -721,11 +805,17 @@ void readFTdata(void *shared_data)
                 bIsCalibrationMode = true;
                 
                 std::cout << "Time consumed: " << duration / 1000000  << " seconds" << std::endl;
-                std::cout << "User Selected Block: " << roundComplete  << std::endl;
-
-                // Duration, Block Number, Stiffness 0, Face 0, Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3
-                myfile << duration << "," <<  roundComplete << "," << stiffnessList[0] << "," << faceList[0] << "," << stiffnessList[1] << "," << faceList[1] << "," <<  stiffnessList[2] << "," << faceList[2] << "," << stiffnessList[3] << "," << faceList[3] << std::endl;
+                if (gStack.size() == 4){
+                    std::cout << "User Selected Block: " << gStack[0] << gStack[1] << gStack[2] << gStack[3] << std::endl;
+                    // Duration, Block Number, Stiffness 0, Face 0, Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3
+                    myfile << duration << "," <<  gStack[0] << gStack[1] << gStack[2] << gStack[3] << "," << stiffnessList[0] << "," << faceList[0] << "," << stiffnessList[1] << "," << faceList[1] << "," <<  stiffnessList[2] << "," << faceList[2] << "," << stiffnessList[3] << "," << faceList[3] << std::endl;
+                }
+                else{
+                    std::cout << "gStack error" << std::endl;
+                }
+                
                 roundComplete = 0;
+                resetBoxAndWidgetAndStack();
 
                 // Generate New Data for Experiment, Dummy Code for Now
                 stiffnessList[0] = 2000;

@@ -307,7 +307,7 @@ int main(int argc, char* argv[])
 
         // set position and orientation
         boxes[i]->setLocalPos(box_positions[i]);
-        boxes[i]->m_material->setBlueSteel();
+        boxes[i]->m_material->setYellowGold();
 
         boxes[i]->createEffectSurface();
         // boxes[i]->m_material->setStiffness(maxStiffness);
@@ -319,47 +319,60 @@ int main(int argc, char* argv[])
     box2 = boxes[2];
     box3 = boxes[3];
 
+    /* 
+    // Zhian: Set texture attempt
+    // load a texture image file    // create a texture map
+    box0->m_texture = cTexture2d::create();
+    box0->m_texture->loadFromFile("lenna.png");
+    box0->m_material->setTextureLevel(1.0);
+
+    // enable texture mapping
+    box0->setUseTexture(true);
+    // assign a white material color that is modulated with the texture
+    box0->m_material->setWhite();
+    */
+
     cShapeBox* wall0 = new cShapeBox(0.11, 0.01, 0.08);
     world->addChild(wall0);
 
     // set position and orientation
     wall0->setLocalPos(0, 0, -0.025);
-    wall0->m_material->setYellowGold();
+    wall0->m_material->setWhite();
 
     cShapeBox* wall1 = new cShapeBox(0.01, 0.11, 0.08);
     world->addChild(wall1);
 
     // set position and orientation
     wall1->setLocalPos(0, 0, -0.025);
-    wall1->m_material->setYellowGold();
+    wall1->m_material->setWhite();
 
     cShapeBox* wall2 = new cShapeBox(0.13, 0.01, 0.08);
     world->addChild(wall2);
 
     // set position and orientation
     wall2->setLocalPos(0, 0.06, -0.025);
-    wall2->m_material->setYellowGold();
+    wall2->m_material->setWhite();
 
     cShapeBox* wall3 = new cShapeBox(0.13, 0.01, 0.08);
     world->addChild(wall3);
 
     // set position and orientation
     wall3->setLocalPos(0, -0.06, -0.025);
-    wall3->m_material->setYellowGold();
+    wall3->m_material->setWhite();
 
     cShapeBox* wall4 = new cShapeBox(0.01, 0.13, 0.08);
     world->addChild(wall4);
 
     // set position and orientation
     wall4->setLocalPos(0.06, 0, -0.025);
-    wall4->m_material->setYellowGold();
+    wall4->m_material->setWhite();
 
     cShapeBox* wall5 = new cShapeBox(0.01, 0.13, 0.08);
     world->addChild(wall5);
 
     // set position and orientation
     wall5->setLocalPos(-0.06, 0, -0.025);
-    wall5->m_material->setYellowGold();
+    wall5->m_material->setWhite();
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
@@ -384,7 +397,9 @@ int main(int argc, char* argv[])
     labelExperimentDisplay = new cLabel(font);
     camera->m_frontLayer->addChild(labelExperimentDisplay);
     
+    // Zhian Li: Add widgets for the blocks on the side
     using namespace chai3d;
+    
     // create block object
     bitmapNumber1 = new cBitmap();
     // add bitmap to front layer of camera
@@ -392,7 +407,7 @@ int main(int argc, char* argv[])
     // load image file
     bitmapNumber1->loadFromFile("number1.png");
     bitmapNumber1->setZoom(0.25, 0.25);
-    bitmapNumber1->setLocalPos(50, 50, 0);
+    bitmapNumber1->setLocalPos(50, 64, 0);
     bitmapNumber1->setTransparencyLevel(0);
 
     // create block object
@@ -402,8 +417,28 @@ int main(int argc, char* argv[])
     // load image file
     bitmapNumber2->loadFromFile("number2.png");
     bitmapNumber2->setZoom(0.25, 0.25);
-    bitmapNumber2->setLocalPos(50, 100, 0);
+    bitmapNumber2->setLocalPos(50, 128, 0);
     bitmapNumber2->setTransparencyLevel(0);
+
+    // create block object
+    bitmapNumber3 = new cBitmap();
+    // add bitmap to front layer of camera
+    camera->m_frontLayer->addChild(bitmapNumber3);
+    // load image file
+    bitmapNumber3->loadFromFile("number3.png");
+    bitmapNumber3->setZoom(0.25, 0.25);
+    bitmapNumber3->setLocalPos(50, 192, 0);
+    bitmapNumber3->setTransparencyLevel(0);
+
+    // create block object
+    bitmapNumber4 = new cBitmap();
+    // add bitmap to front layer of camera
+    camera->m_frontLayer->addChild(bitmapNumber4);
+    // load image file
+    bitmapNumber4->loadFromFile("number4.png");
+    bitmapNumber4->setZoom(0.25, 0.25);
+    bitmapNumber4->setLocalPos(50, 256, 0);
+    bitmapNumber4->setTransparencyLevel(0);
 
     //--------------------------------------------------------------------------
     // START THREADS
