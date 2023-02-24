@@ -218,6 +218,13 @@ cShapeBox* box1;
 cShapeBox* box2;
 cShapeBox* box3;
 
+
+// a label to display the experiment related info
+cLabel* labelExperimentDisplay;
+
+cBitmap* bitmapNumber1;
+cBitmap* bitmapNumber2;
+
 // Meter to Inch Conversion meter = inch / 39.37
 const double InchPerMeter = 39.37;
 const cVector3d OriginCorrection = cVector3d(- 0.27, 0.025, 0.32);
@@ -226,10 +233,10 @@ bool bIsCalibrationMode = true;
 int currentPlateNumber = -1;
 
 // Variable list for stiffness and face of different blocks
-int stiffnessList[4] = {2000, 2000, 2000, 2000};
+int stiffnessList[4] = {1000, 1200, 1600, 1800};
 
 
-int faceList[4] = {1, 1, 0, 0};
+int faceList[4] = {0, 2, 1, 0};
 int roundComplete = 0;
 int recordHeight = 0;
 // Boxes for different stiffness
@@ -269,6 +276,9 @@ void windowSizeCallback(GLFWwindow* a_window, int a_width, int a_height)
 
     // update position of label
     labelHapticDevicePosition->setLocalPos(20, height - 60, 0);
+
+    // update position of label
+    labelExperimentDisplay->setLocalPos(20, height - 80, 0);
 }
 
 //------------------------------------------------------------------------------
@@ -288,26 +298,28 @@ void updateGraphics(void)
 
     // update position data
     cMatrix3d rotationMatrixFalconStanding( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0 );
-    std::string currentPlateString = "Not On Plate     Stiffness: ";
+    std::string currentPlateString = "Not On Box      Stiffness: ";
     if (currentPlateNumber >= 0){
         if (currentPlateNumber == 0) {
-            currentPlateString = " Box 0     Stiffness: ";
-        }
-        else if (currentPlateNumber == 1) {
             currentPlateString = " Box 1     Stiffness: ";
         }
-        else if (currentPlateNumber == 2) {
+        else if (currentPlateNumber == 1) {
             currentPlateString = " Box 2     Stiffness: ";
         }
-        else if (currentPlateNumber == 3) {
+        else if (currentPlateNumber == 2) {
             currentPlateString = " Box 3     Stiffness: ";
+        }
+        else if (currentPlateNumber == 3) {
+            currentPlateString = " Box 4     Stiffness: ";
         }
     }
     if (bIsCalibrationMode){
         labelHapticDevicePosition->setText((rotationMatrixFalconStanding * hapticDevicePosition).str(3) + "        Press V To Exit Calibration Mode");
+        labelExperimentDisplay->setText("Exit Calibration Mode to Start Experiment");
     }
     else{
-        labelHapticDevicePosition->setText((rotationMatrixFalconStanding * hapticDevicePosition).str(3) + " Press C To Enter Calibration Mode    " + currentPlateString +  std::to_string(stiffness));
+        labelHapticDevicePosition->setText((rotationMatrixFalconStanding * hapticDevicePosition).str(3) + "        Press C To Enter Calibration Mode    ");
+        labelExperimentDisplay->setText(currentPlateString + std::to_string(stiffness));
     }
     // update haptic and graphic rate data
     labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz / " +
@@ -404,33 +416,39 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     else if (a_key == GLFW_KEY_1)
     {
         if (!bIsCalibrationMode){
-            std::cout << "user selected block 0" << std::endl;
+            std::cout << "user selected block 1" << std::endl;
         }
-        roundComplete = -1;
+        roundComplete = 1;
+        box0->setShowEnabled(false);
+        bitmapNumber1->setTransparencyLevel(1);
     }
 
     else if (a_key == GLFW_KEY_2)
     {
         if (!bIsCalibrationMode){
-            std::cout << "user selected block 1" << std::endl;
+            std::cout << "user selected block 2" << std::endl;
         }
-        roundComplete = -1;
+        roundComplete = 2;
+        box1->setShowEnabled(false);
+        bitmapNumber2->setTransparencyLevel(1);
     }
 
     else if (a_key == GLFW_KEY_3)
     {
         if (!bIsCalibrationMode){
-            std::cout << "user selected block 2" << std::endl;
+            std::cout << "user selected block 3" << std::endl;
         }
-        roundComplete = -1;
+        roundComplete = 3;
+        box2->setShowEnabled(false);
     }
 
     else if (a_key == GLFW_KEY_4)
     {
         if (!bIsCalibrationMode){
-            std::cout << "user selected block 3" << std::endl;
+            std::cout << "user selected block 4" << std::endl;
         }
-        roundComplete = 1;
+        roundComplete = 4;
+        box3->setShowEnabled(false);
     }
 
     else if (a_key == GLFW_KEY_R)
@@ -599,8 +617,7 @@ void updateHaptics(void* shared_data)
             desiredPosition = lastDesiredPosition;
             currentPlateNumber = -1;
         }
-        
-        
+         
         if (currentPlateNumber >= 0){
             stiffness = Stiffness((double) stiffnessList[currentPlateNumber]);
             TargetFace = faceList[currentPlateNumber];
@@ -618,7 +635,7 @@ void updateHaptics(void* shared_data)
 
         // Limit force
         double corrected_stiffness = Stiffness(stiffness);
-        forceField = cVector3d(corrected_stiffness * displacement.x(), corrected_stiffness * displacement.y() * 0.02, corrected_stiffness * displacement.z() * 0.2);
+        forceField = cVector3d(corrected_stiffness * displacement.x(), corrected_stiffness * displacement.y() * 0.2, corrected_stiffness * displacement.z() * 0.2);
         
         if (forceField.y() > 0.2){
             forceField.y(2);
@@ -677,6 +694,8 @@ void readFTdata(void *shared_data)
 
     auto t0 = std::chrono::high_resolution_clock::now();
     int output_count = 0;
+
+    myfile << "Duration, User Selected Block Number , Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3, Stiffness 4, Face 4" << std::endl;
 	while (!exitKey) {
         bird.getCoordinatesAngles( 0, dX, dY, dZ, dAzimuth, dElevation, dRoll );
         auto t2 = std::chrono::high_resolution_clock::now();
@@ -700,8 +719,24 @@ void readFTdata(void *shared_data)
         else{
             if (roundComplete){
                 bIsCalibrationMode = true;
-                roundComplete = 0;
+                
                 std::cout << "Time consumed: " << duration / 1000000  << " seconds" << std::endl;
+                std::cout << "User Selected Block: " << roundComplete  << std::endl;
+
+                // Duration, Block Number, Stiffness 0, Face 0, Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3
+                myfile << duration << "," <<  roundComplete << "," << stiffnessList[0] << "," << faceList[0] << "," << stiffnessList[1] << "," << faceList[1] << "," <<  stiffnessList[2] << "," << faceList[2] << "," << stiffnessList[3] << "," << faceList[3] << std::endl;
+                roundComplete = 0;
+
+                // Generate New Data for Experiment, Dummy Code for Now
+                stiffnessList[0] = 2000;
+                stiffnessList[1] = 2000;
+                stiffnessList[2] = 2000;
+                stiffnessList[3] = 2000;
+
+                faceList[0] = !faceList[0];
+                faceList[1] = !faceList[1];
+                faceList[2] = !faceList[2];
+                faceList[3] = !faceList[3];
             }
         }
 

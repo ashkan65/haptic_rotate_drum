@@ -48,7 +48,7 @@ EAppMode g_eAppMode = AM_DEMO;
 
 const string g_programName = "HelloEposCmd";
 
-volatile int TargetFace = 0;
+int TargetFace = 0;
 
 enum Color { RED, YELLOW, BLUE };
 
@@ -336,10 +336,10 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			}
 
 			// 2 seconds sleep, waiting until operation finishes
-			sleep(1);
+			sleep(2);
 			
 			// 0.5 second sleep
-			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
+			nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
 
 			VCS_GetPositionIs(p_DeviceHandle, p_usNodeId, &currentPosition, &p_rlErrorCode);
 
@@ -347,7 +347,7 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			CurrentFace = TargetFace;
 			positionIndex++;
 
-			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
+			nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
 
 			// Clear Error After Each Move
 			PrepareDemo(&p_rlErrorCode);

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli
+CMAKE_SOURCE_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build
+CMAKE_BINARY_DIR = /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/staircase.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/staircase.dir/flags.make
 
 CMakeFiles/staircase.dir/staircase.cpp.o: CMakeFiles/staircase.dir/flags.make
 CMakeFiles/staircase.dir/staircase.cpp.o: ../staircase.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/staircase.dir/staircase.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/staircase.dir/staircase.cpp.o -c /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/staircase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/staircase.dir/staircase.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/staircase.dir/staircase.cpp.o -c /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/staircase.cpp
 
 CMakeFiles/staircase.dir/staircase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/staircase.dir/staircase.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/staircase.cpp > CMakeFiles/staircase.dir/staircase.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/staircase.cpp > CMakeFiles/staircase.dir/staircase.cpp.i
 
 CMakeFiles/staircase.dir/staircase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/staircase.dir/staircase.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/staircase.cpp -o CMakeFiles/staircase.dir/staircase.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/staircase.cpp -o CMakeFiles/staircase.dir/staircase.cpp.s
 
 CMakeFiles/staircase.dir/staircase.cpp.o.requires:
 
@@ -91,7 +91,7 @@ staircase_EXTERNAL_OBJECTS =
 libstaircase.a: CMakeFiles/staircase.dir/staircase.cpp.o
 libstaircase.a: CMakeFiles/staircase.dir/build.make
 libstaircase.a: CMakeFiles/staircase.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libstaircase.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libstaircase.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/staircase.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/staircase.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/staircase.dir/clean:
 .PHONY : CMakeFiles/staircase.dir/clean
 
 CMakeFiles/staircase.dir/depend:
-	cd /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build /home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/staircase.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2 /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2 /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build /home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build/CMakeFiles/staircase.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/staircase.dir/depend
 

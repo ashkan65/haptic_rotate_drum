@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/pest.cpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/pest.cpp
 iostream
 -
 pest.hpp
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/pest.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/pest.hpp
 
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/pest.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/pest.hpp
 iostream
 -
 

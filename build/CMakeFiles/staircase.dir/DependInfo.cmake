@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/staircase.cpp" "/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/build/CMakeFiles/staircase.dir/staircase.cpp.o"
+  "/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/staircase.cpp" "/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/build/CMakeFiles/staircase.dir/staircase.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

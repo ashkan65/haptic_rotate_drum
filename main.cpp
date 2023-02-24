@@ -310,7 +310,7 @@ int main(int argc, char* argv[])
         boxes[i]->m_material->setBlueSteel();
 
         boxes[i]->createEffectSurface();
-        boxes[i]->m_material->setStiffness(maxStiffness);
+        // boxes[i]->m_material->setStiffness(maxStiffness);
     }
     
     // save pointers to global variables
@@ -379,6 +379,31 @@ int main(int argc, char* argv[])
     // create a label to display the haptic and graphic rate of the simulation
     labelRates = new cLabel(font);
     camera->m_frontLayer->addChild(labelRates);
+
+    // create a label to display the position of haptic device
+    labelExperimentDisplay = new cLabel(font);
+    camera->m_frontLayer->addChild(labelExperimentDisplay);
+    
+    using namespace chai3d;
+    // create block object
+    bitmapNumber1 = new cBitmap();
+    // add bitmap to front layer of camera
+    camera->m_frontLayer->addChild(bitmapNumber1);
+    // load image file
+    bitmapNumber1->loadFromFile("number1.png");
+    bitmapNumber1->setZoom(0.25, 0.25);
+    bitmapNumber1->setLocalPos(50, 50, 0);
+    bitmapNumber1->setTransparencyLevel(0);
+
+    // create block object
+    bitmapNumber2 = new cBitmap();
+    // add bitmap to front layer of camera
+    camera->m_frontLayer->addChild(bitmapNumber2);
+    // load image file
+    bitmapNumber2->loadFromFile("number2.png");
+    bitmapNumber2->setZoom(0.25, 0.25);
+    bitmapNumber2->setLocalPos(50, 100, 0);
+    bitmapNumber2->setTransparencyLevel(0);
 
     //--------------------------------------------------------------------------
     // START THREADS

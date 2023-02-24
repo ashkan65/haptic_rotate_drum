@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.cpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/simple826.cpp
 iostream
 -
 simple826.hpp
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/simple826.hpp
 stdio.h
 -
 stdlib.h
@@ -20,17 +20,17 @@ math.h
 sstream
 -
 
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/simple826.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/simple826.hpp
 chrono
 -
 826api.h
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/826api.h
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/826api.h
 type.hpp
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/type.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/type.hpp
 thread
 -
 
-/home/naghmehz/Desktop/Sensoray_CHAI3D-zhianli/type.hpp
+/home/naghmehz/Desktop/Sensoray_CHAI3D-experiment2/type.hpp
 vector
 -
 
