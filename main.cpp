@@ -247,6 +247,9 @@ int main(int argc, char* argv[])
         cursor->setFrameSize(0.05);
     }
 
+    cursor->setShowEnabled(false); // Default to hide
+    velocity->setShowEnabled(false);
+
     // if the device has a gripper, enable the gripper to simulate a user switch
     hapticDevice->setEnableGripperUserSwitch(true);
 
@@ -397,15 +400,36 @@ int main(int argc, char* argv[])
     labelExperimentDisplay = new cLabel(font);
     camera->m_frontLayer->addChild(labelExperimentDisplay);
     
+
+    cLabel* labelBox1 = new cLabel(font);
+    camera->m_frontLayer->addChild(labelBox1);
+    labelBox1->setText("Box 1");
+    labelBox1->setLocalPos(600, 220, 0);
+
+    cLabel* labelBox2 = new cLabel(font);
+    camera->m_frontLayer->addChild(labelBox2);
+    labelBox2->setText("Box 2");
+    labelBox2->setLocalPos(600, 320, 0);
+
+    cLabel* labelBox3 = new cLabel(font);
+    camera->m_frontLayer->addChild(labelBox3);
+    labelBox3->setText("Box 3");
+    labelBox3->setLocalPos(220, 320, 0);
+
+    cLabel* labelBox4 = new cLabel(font);
+    camera->m_frontLayer->addChild(labelBox4);
+    labelBox4->setText("Box 4");
+    labelBox4->setLocalPos(220, 220, 0);
+
     // Zhian Li: Add widgets for the blocks on the side
     using namespace chai3d;
-    
+
     // create block object
     bitmapNumber1 = new cBitmap();
     // add bitmap to front layer of camera
     camera->m_frontLayer->addChild(bitmapNumber1);
     // load image file
-    bitmapNumber1->loadFromFile("number1.png");
+    bitmapNumber1->loadFromFile("../texture/number1.png");
     bitmapNumber1->setZoom(0.25, 0.25);
     bitmapNumber1->setLocalPos(50, 64, 0);
     bitmapNumber1->setTransparencyLevel(0);
@@ -415,7 +439,7 @@ int main(int argc, char* argv[])
     // add bitmap to front layer of camera
     camera->m_frontLayer->addChild(bitmapNumber2);
     // load image file
-    bitmapNumber2->loadFromFile("number2.png");
+    bitmapNumber2->loadFromFile("../texture/number2.png");
     bitmapNumber2->setZoom(0.25, 0.25);
     bitmapNumber2->setLocalPos(50, 128, 0);
     bitmapNumber2->setTransparencyLevel(0);
@@ -425,7 +449,7 @@ int main(int argc, char* argv[])
     // add bitmap to front layer of camera
     camera->m_frontLayer->addChild(bitmapNumber3);
     // load image file
-    bitmapNumber3->loadFromFile("number3.png");
+    bitmapNumber3->loadFromFile("../texture/number3.png");
     bitmapNumber3->setZoom(0.25, 0.25);
     bitmapNumber3->setLocalPos(50, 192, 0);
     bitmapNumber3->setTransparencyLevel(0);
@@ -435,7 +459,7 @@ int main(int argc, char* argv[])
     // add bitmap to front layer of camera
     camera->m_frontLayer->addChild(bitmapNumber4);
     // load image file
-    bitmapNumber4->loadFromFile("number4.png");
+    bitmapNumber4->loadFromFile("../texture/number4.png");
     bitmapNumber4->setZoom(0.25, 0.25);
     bitmapNumber4->setLocalPos(50, 256, 0);
     bitmapNumber4->setTransparencyLevel(0);

@@ -232,6 +232,7 @@ const double InchPerMeter = 39.37;
 const cVector3d OriginCorrection = cVector3d(- 0.27, 0.025, 0.32);
 cVector3d CalibrationCorrection = cVector3d(0, 0, 0.16);
 bool bIsCalibrationMode = true;
+bool bIsUserMode = true;
 int currentPlateNumber = -1;
 
 // Variable list for stiffness and face of different blocks
@@ -302,19 +303,19 @@ void updateGraphics(void)
 
     // update position data
     cMatrix3d rotationMatrixFalconStanding( 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0 );
-    std::string currentPlateString = "Not On Box      Stiffness: ";
+    std::string currentPlateString = "Not On Box";
     if (currentPlateNumber >= 0){
         if (currentPlateNumber == 0) {
-            currentPlateString = " Box 1     Stiffness: ";
+            currentPlateString = " Box 1";
         }
         else if (currentPlateNumber == 1) {
-            currentPlateString = " Box 2     Stiffness: ";
+            currentPlateString = " Box 2";
         }
         else if (currentPlateNumber == 2) {
-            currentPlateString = " Box 3     Stiffness: ";
+            currentPlateString = " Box 3";
         }
         else if (currentPlateNumber == 3) {
-            currentPlateString = " Box 4     Stiffness: ";
+            currentPlateString = " Box 4";
         }
     }
     if (bIsCalibrationMode){
@@ -323,7 +324,13 @@ void updateGraphics(void)
     }
     else{
         labelHapticDevicePosition->setText((rotationMatrixFalconStanding * hapticDevicePosition).str(3) + "        Press C To Enter Calibration Mode    ");
-        labelExperimentDisplay->setText(currentPlateString + std::to_string(stiffness));
+        if (bIsUserMode){  
+            labelExperimentDisplay->setText(currentPlateString + "      User Mode");
+        }
+        else{ 
+            labelExperimentDisplay->setText(currentPlateString + "      Stiffness: " + std::to_string(stiffness));
+        }
+        
     }
     // update haptic and graphic rate data
     labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz / " +
@@ -441,6 +448,15 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     {
        bIsCalibrationMode = false;
        roundComplete = 0;
+    }
+
+    else if (a_key == GLFW_KEY_U)
+    {
+       // If going into user mode, hide, otherwise show
+       cursor->setShowEnabled(bIsUserMode);
+       velocity->setShowEnabled(bIsUserMode);
+       bIsUserMode = !bIsUserMode;
+       
     }
 
     else if (a_key == GLFW_KEY_1)
@@ -668,7 +684,7 @@ void updateHaptics(void* shared_data)
         // If tracker is above a platform, we think the tracker is in workspace 
         // and start moving the haptic device 
         
-        if (abs(birdLocalPosition.x()) < 0.1 && abs(birdLocalPosition.y()) < 0.1) // 
+        if (abs(birdLocalPosition.x()) < 0.2 && abs(birdLocalPosition.y()) < 0.2) // 
         {
             // box 0
             if (birdLocalPosition.x() > 0.01 && birdLocalPosition.y() > 0.01){
@@ -719,24 +735,24 @@ void updateHaptics(void* shared_data)
 
         // Limit force
         double corrected_stiffness = Stiffness(stiffness);
-        forceField = cVector3d(corrected_stiffness * displacement.x(), corrected_stiffness * displacement.y() * 0.2, corrected_stiffness * displacement.z() * 0.2);
+        forceField = cVector3d(corrected_stiffness * displacement.x(), stiffness * displacement.y() * 0.4, stiffness * displacement.z() * 0.4);
         
-        if (forceField.y() > 0.2){
+        if (forceField.y() > 0.1){
             forceField.y(2);
         }
-        if (forceField.y() < -0.2){
+        if (forceField.y() < -0.1){
             forceField.y(-2);
         }
-        if (forceField.z() > 0.2){
+        if (forceField.z() > 0.1){
             forceField.z(2);
         }
-        if (forceField.z() < -0.2){
+        if (forceField.z() < -0.1){
             forceField.z(-2);
         }
         
         force.add(gravityCorrection);
         force.add(forceField);
-            
+
         hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
 
         freqCounterHaptics.signal(1);

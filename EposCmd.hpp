@@ -265,6 +265,24 @@ int ParseArguments(int argc, char** argv)
 	return lResult;
 }
 
+long positiveModulus(long a, long b){
+	return (b + (a % b)) % b;
+}
+
+long getNewTargetPosition(long currentPosition, int TargetFace){
+	long currentFaceWithoutModulus = (currentPosition / 6000);
+
+	if (positiveModulus(currentFaceWithoutModulus, 3) == TargetFace){
+		return currentPosition + 3000;
+	}
+	if (positiveModulus(currentFaceWithoutModulus + 1, 3) == TargetFace){
+		return currentPosition + 6000;
+	}
+	if (positiveModulus(currentFaceWithoutModulus - 1, 3) == TargetFace){
+		return currentPosition - 6000;
+	}
+}
+
 int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, unsigned int & p_rlErrorCode)
 {
 	int lResult = MMC_SUCCESS;
@@ -299,6 +317,9 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 		int positionIndex = 0;
 
 		int CurrentFace = TargetFace; // Current = Target = 0
+
+		long targetPosition = 0;
+
 		while (true)
 		{
 			// Sleep for 0.1 second if no need to rotate
@@ -307,10 +328,10 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 				continue;
 			}
 
-			long targetPosition = 0;
+			
 			
 			if (TargetFace == 0 || TargetFace == 1 || TargetFace == 2){
-				targetPosition = (long) TargetFace * 6000;
+				targetPosition = getNewTargetPosition(targetPosition, TargetFace);
 			}
 			else{
 				std::cout << "Invalid Face Index " << TargetFace << std::endl;
@@ -327,16 +348,13 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			
 			// Absolute position, 
 			bool bIsAbsolutePosition = true;
-			bool bIsImmediately = false;
+			bool bIsImmediately = true;
 			if(VCS_MoveToPosition(p_DeviceHandle, p_usNodeId, targetPosition, bIsAbsolutePosition, bIsImmediately, &p_rlErrorCode) == 0)
 			{
 				LogError("VCS_MoveToPosition", lResult, p_rlErrorCode);
 				lResult = MMC_FAILED;
 				break;
 			}
-
-			// 2 seconds sleep, waiting until operation finishes
-			sleep(2);
 			
 			// 0.5 second sleep
 			nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
@@ -347,7 +365,7 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			CurrentFace = TargetFace;
 			positionIndex++;
 
-			nanosleep((const struct timespec[]){{0, 500000000L}}, NULL);
+			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
 
 			// Clear Error After Each Move
 			PrepareDemo(&p_rlErrorCode);
