@@ -137,10 +137,10 @@ clean: CMakeFiles/pest.dir/clean
 # Target rules for target CMakeFiles/chai_demo.dir
 
 # All Build rule for target.
-CMakeFiles/chai_demo.dir/all: CMakeFiles/PointATC3DG.dir/all
-CMakeFiles/chai_demo.dir/all: CMakeFiles/forcesensor.dir/all
 CMakeFiles/chai_demo.dir/all: CMakeFiles/staircase.dir/all
+CMakeFiles/chai_demo.dir/all: CMakeFiles/PointATC3DG.dir/all
 CMakeFiles/chai_demo.dir/all: CMakeFiles/simple826.dir/all
+CMakeFiles/chai_demo.dir/all: CMakeFiles/forcesensor.dir/all
 CMakeFiles/chai_demo.dir/all: CMakeFiles/pest.dir/all
 	$(MAKE) -f CMakeFiles/chai_demo.dir/build.make CMakeFiles/chai_demo.dir/depend
 	$(MAKE) -f CMakeFiles/chai_demo.dir/build.make CMakeFiles/chai_demo.dir/build

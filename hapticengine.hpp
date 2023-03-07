@@ -234,12 +234,50 @@ cVector3d CalibrationCorrection = cVector3d(0, 0, 0.16);
 bool bIsCalibrationMode = true;
 bool bIsUserMode = true;
 int currentPlateNumber = -1;
+int roundNo =0;
 
 // Variable list for stiffness and face of different blocks
-int stiffnessList[4] = {1000, 1200, 1600, 1800};
+int stiffnessList[18][4] = {1000,    2000,    2000,    1000,
+                            1500,    1000,    1500,    1000,
+                            2000,    1000,    1000,    2000,
+                            1000,    2000,    1000,    2000,
+                            1500,    2000,    1500,    2000,
+                            1000,    1000,    1500,    1500,
+                            1500,    1500,    2000,    2000,
+                            1500,    1000,    1000,    1500,
+                            1500,    2000,    1500,    2000,
+                            1000,    2000,    2000,    1000,
+                            1500,    1000,    1500,    1000,
+                            2000,    1000,    1000,    2000,
+                            1000,    2000,    1000,    2000,
+                            1500,    2000,    1500,    2000,
+                            1000,    1000,    1500,    1500,
+                            1500,    1500,    2000,    2000,
+                            1500,    1000,    1000,    1500,
+                            1500,    2000,    1500,    2000};
 
-int faceList[4] = {0, 2, 1, 0};
+
+int faceList[18][4] = { 0,   2,   0,   2,
+                        1,   1,   2,   2,
+                        1,   1,   0,   0,
+                        2,   2,   1,   1,
+                        1,   0,   0,   1,
+                        1,   0,   1,   0,
+                        1,   2,   1,   2,
+                        2,   2,   0,   0,
+                        0,   0,   2,   2,
+                        0,   2,   0,   2,
+                        1,   1,   2,   2,
+                        1,   1,   0,   0,
+                        2,   2,   1,   1,
+                        1,   0,   0,   1,
+                        1,   0,   1,   0,
+                        1,   2,   1,   2,
+                        2,   2,   0,   0,
+                        0,   0,   2,   2};
 int roundComplete = 0;
+
+int userInteractionHandle = 0;
 int recordHeight = 0;
 
 // Stack for experiment2
@@ -442,12 +480,14 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     {
        bIsCalibrationMode = true;
        roundComplete = 0;
+       userInteractionHandle = 0;
     }
 
     else if (a_key == GLFW_KEY_V)
     {
        bIsCalibrationMode = false;
        roundComplete = 0;
+       userInteractionHandle = 0;
     }
 
     else if (a_key == GLFW_KEY_U)
@@ -469,6 +509,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                     box0->setShowEnabled(true);
                     gStack.pop_back();
                     bitmapNumber1->setTransparencyLevel(0);
+                    userInteractionHandle = 1;
                 }
             }
             else{
@@ -476,6 +517,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                 gStack.push_back(1);
                 bitmapNumber1->setLocalPos(50, gStack.size() * 64, 0);
                 bitmapNumber1->setTransparencyLevel(1);
+                userInteractionHandle = 1;
             }
         }
     }
@@ -490,6 +532,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                     box1->setShowEnabled(true);
                     gStack.pop_back();
                     bitmapNumber2->setTransparencyLevel(0);
+                    userInteractionHandle = 1;
                 }
             }
             else{
@@ -497,6 +540,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                 gStack.push_back(2);
                 bitmapNumber2->setLocalPos(50, gStack.size() * 64, 0);
                 bitmapNumber2->setTransparencyLevel(1);
+                userInteractionHandle = 1;
             }
         }
     }
@@ -511,6 +555,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                     box2->setShowEnabled(true);
                     gStack.pop_back();
                     bitmapNumber3->setTransparencyLevel(0);
+                    userInteractionHandle = 1;
                 }
             }
             else{
@@ -518,6 +563,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                 gStack.push_back(3);
                 bitmapNumber3->setLocalPos(50, gStack.size() * 64, 0);
                 bitmapNumber3->setTransparencyLevel(1);
+                userInteractionHandle = 1;
             }
         }
     }
@@ -532,6 +578,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                     box3->setShowEnabled(true);
                     gStack.pop_back();
                     bitmapNumber4->setTransparencyLevel(0);
+                    userInteractionHandle = 1;
                 }
             }
             else{
@@ -539,6 +586,7 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
                 gStack.push_back(4);
                 bitmapNumber4->setLocalPos(50, gStack.size() * 64, 0);
                 bitmapNumber4->setTransparencyLevel(1);
+                userInteractionHandle = 1;
             }
         }
     }
@@ -572,7 +620,7 @@ void updateHaptics(void* shared_data)
     simulationFinished = false;
     double prev_stiffness=0.0;
     cVector3d forceField (0.0,0.0,0.0);
-    cVector3d gravityCorrection (3.5, 0.0, -2.5);
+    cVector3d gravityCorrection (3.5, -0.25, -2.5);
     double add=0;
     // main haptic simulation loop
     int loopcount=0;
@@ -719,8 +767,8 @@ void updateHaptics(void* shared_data)
         }
          
         if (currentPlateNumber >= 0){
-            stiffness = Stiffness((double) stiffnessList[currentPlateNumber]);
-            TargetFace = faceList[currentPlateNumber];
+            stiffness = Stiffness((double) stiffnessList[roundNo][currentPlateNumber]);
+            TargetFace = faceList[roundNo][currentPlateNumber];
         }
 
         lastDesiredPosition = desiredPosition;
@@ -764,21 +812,22 @@ void updateHaptics(void* shared_data)
 
 void readFTdata(void *shared_data)
 {
+    int participant_num=((int *)shared_data)[0];
+    int experiment_num=((int *)shared_data)[1];
+    int file_num=((int *)shared_data)[2];
     time_t t = time(0);   // get time now
     struct tm * now = localtime( & t );
     char buffer [80];
+    char buffer1 [80];
     //snprintf(buffer, sizeof(buffer), "file_%d.txt", 10);
-    strftime (buffer,80,"%Y-%m-%d-%H-%M-%S.csv",now);
+    snprintf(buffer, sizeof(buffer), "participant%d_experiment%d_file%d.csv", participant_num ,experiment_num , file_num);
+    strftime (buffer1,80,"%Y-%m-%d-%H-%M-%S.csv",now);
     std::ofstream myfile;
+    std::ofstream myfile1;
     myfile.open (buffer);
+    myfile1.open (buffer1);
     int sennum=0;
-    //std::cout<<Kp<<std::endl;
-    //if( !bird ) return -1;
-    //bird.setSuddenOutputChangeLock( 0 );
-    //std::cout << "nSensors: " << numsen << std::endl;
-    //char outFileString[13] = "testing.csv";
-    //FILE *outFilePtr;
-    //outFilePtr = fopen(outFileString, "w+");
+
     bird.setSuddenOutputChangeLock( 0 );
     std::cout << "nSensors: " << numsen << std::endl;
     std::cout << "Here!!!" << std::endl;
@@ -787,27 +836,21 @@ void readFTdata(void *shared_data)
     int numSample =4;//Number of samples needed to get average in buffer
     int frequency =1000;
     Force.FTSetOffset(1000);//Get the offset from the first 1000 data
-    
-    //int rec_count=0;     
-    //time_t ta=time(NULL);
-    //time_t tb=time(NULL);
 
     auto t0 = std::chrono::high_resolution_clock::now();
     int output_count = 0;
 
     myfile << "Duration, User Selected Block Number , Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3, Stiffness 4, Face 4" << std::endl;
+    myfile1 << "Duration, User Selected Block Number , Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3, Stiffness 4, Face 4" << std::endl;
+    myfile << "participant " <<participant_num<< "experiment "  << experiment_num << "file_num "<< file_num <<std::endl;
+    myfile1 << "participant " <<participant_num<< "experiment "  << experiment_num << "file_num "<< file_num <<std::endl;
 	while (!exitKey) {
         bird.getCoordinatesAngles( 0, dX, dY, dZ, dAzimuth, dElevation, dRoll );
         auto t2 = std::chrono::high_resolution_clock::now();
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>( t2 - t0 ).count();
         FT_data = Force.GetCurrentFT(numSample) ;
         *(Vector6FT*)(shared_data) = FT_data;
-        // myfile <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<stiffness<<" "<<dX<< " "<<dY<< " "<<dZ<< " "<<dAzimuth<< " "<<dElevation<< " "<<dRoll<< " "<<duration<<" "<<" "<<first_stimulus<<" "<<second_stimulus<<"\n";
-        //myfile2 <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<Kp<<" "<<dX<< " "<<dY<< " "<<dZ<< " "<<dAzimuth<< " "<<dElevation<< " "<<dRoll<< " "<<duration<<"\n";
-        //std::cout << "\rX: " << dX << ", \tY: " << dY << ", \tZ: " << dZ;
-        //std::cout << ", \tA: " << dAzimuth << ", \tE: " << dElevation << ", \tR: " << dRoll << std::endl;
         output_count++;
-        // double baseX, baseY, baseZ, baseAzimuth, baseElevation, baseRoll;
         bird.getCoordinatesAngles( 1, baseX, baseY, baseZ, baseAzimuth, baseElevation, baseRoll );
         if (output_count % 1000 == 0){
             // std::cout << birdLocalPosition.x() << " " << birdLocalPosition.y() << " "<< birdLocalPosition.z() << " "<<dAzimuth<< " "<<dElevation<< " "<< dRoll << std::endl;
@@ -817,6 +860,32 @@ void readFTdata(void *shared_data)
             t0 = std::chrono::high_resolution_clock::now();
         }
         else{
+            if (userInteractionHandle){
+                std::cout << "Time consumed: " << duration / 1000000  << " seconds" << std::endl;
+                if (gStack.size() >= 0 && gStack.size() <= 4){
+                    std::cout << "User Selected Block: ";
+                    for (auto item : gStack){
+                        std::cout << item;
+                    }
+                    std::cout << std::endl;
+
+                    // Duration, Block Number, Stiffness 0, Face 0, Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3
+                    myfile << duration << ",";
+                    myfile1 << duration << ","; 
+                    for (auto item : gStack){
+                        myfile << item;
+                        myfile1 << item;
+                    }
+                    myfile  << "," << stiffnessList[roundNo][0] << "," << faceList[roundNo][0] << "," << stiffnessList[roundNo][1] << "," << faceList[roundNo][1] << "," <<  stiffnessList[roundNo][2] << "," << faceList[roundNo][2] << "," << stiffnessList[roundNo][3] << "," << faceList[roundNo][3] << std::endl;
+                    myfile1  << "," << stiffnessList[roundNo][0] << "," << faceList[roundNo][0] << "," << stiffnessList[roundNo][1] << "," << faceList[roundNo][1] << "," <<  stiffnessList[roundNo][2] << "," << faceList[roundNo][2] << "," << stiffnessList[roundNo][3] << "," << faceList[roundNo][3] << std::endl;
+
+                }
+                else{
+                    std::cout << "gStack error" << std::endl;
+                }
+
+                userInteractionHandle = 0;
+            }
             if (roundComplete){
                 bIsCalibrationMode = true;
                 
@@ -824,69 +893,34 @@ void readFTdata(void *shared_data)
                 if (gStack.size() == 4){
                     std::cout << "User Selected Block: " << gStack[0] << gStack[1] << gStack[2] << gStack[3] << std::endl;
                     // Duration, Block Number, Stiffness 0, Face 0, Stiffness 1, Face 1, Stiffness 2, Face 2, Stiffness 3, Face 3
-                    myfile << duration << "," <<  gStack[0] << gStack[1] << gStack[2] << gStack[3] << "," << stiffnessList[0] << "," << faceList[0] << "," << stiffnessList[1] << "," << faceList[1] << "," <<  stiffnessList[2] << "," << faceList[2] << "," << stiffnessList[3] << "," << faceList[3] << std::endl;
+                    myfile << duration << "," <<  gStack[0] << gStack[1] << gStack[2] << gStack[3] << "," << stiffnessList[roundNo][0] << "," << faceList[roundNo][0] << "," << stiffnessList[roundNo][1] << "," << faceList[roundNo][1] << "," <<  stiffnessList[roundNo][2] << "," << faceList[roundNo][2] << "," << stiffnessList[roundNo][3] << "," << faceList[roundNo][3] << std::endl;
+                    myfile1 << duration << "," <<  gStack[0] << gStack[1] << gStack[2] << gStack[3] << "," << stiffnessList[roundNo][0] << "," << faceList[roundNo][0] << "," << stiffnessList[roundNo][1] << "," << faceList[roundNo][1] << "," <<  stiffnessList[roundNo][2] << "," << faceList[roundNo][2] << "," << stiffnessList[roundNo][3] << "," << faceList[roundNo][3] << std::endl;
                 }
                 else{
                     std::cout << "gStack error" << std::endl;
                 }
                 
                 roundComplete = 0;
+                roundNo++;
+                std::cout<<"round "<<roundNo<<std::endl;
                 resetBoxAndWidgetAndStack();
-
-                // Generate New Data for Experiment, Dummy Code for Now
-                stiffnessList[0] = 2000;
-                stiffnessList[1] = 2000;
-                stiffnessList[2] = 2000;
-                stiffnessList[3] = 2000;
-
-                faceList[0] = !faceList[0];
-                faceList[1] = !faceList[1];
-                faceList[2] = !faceList[2];
-                faceList[3] = !faceList[3];
             }
         }
 
         if (recordHeight){
             std::cout << "NO: " << currentPlateNumber << " Stiffness: " << stiffness << " Tracker: " << (-dZ / InchPerMeter) * 100 << " Encoder: " << position(0) * 100 << std::endl;
             myfile << "NO: " << currentPlateNumber << " Stiffness: " << stiffness << " Tracker: " << (-dZ / InchPerMeter) * 100 << " Encoder: " << position(0) * 100  << std::endl;
+            myfile1 << "NO: " << currentPlateNumber << " Stiffness: " << stiffness << " Tracker: " << (-dZ / InchPerMeter) * 100 << " Encoder: " << position(0) * 100  << std::endl;
             recordHeight = 0;
         }
     }
 
-    /*
-    while (!exitKey) {
-        //std::cout<<"Success"<<std::endl;
-        FT_data = Force.GetCurrentFT(numSample) ;
-        *(Vector6FT*)(shared_data) = FT_data;
-        myfile <<FT_data[0]<<" "<< FT_data[1]<< " "<<FT_data[2]<< " "<<FT_data[3]<<" "<<FT_data[4]<<" "<< FT_data[5]<< " "<<position(0)<< " "<< position(1)<< " "<< position(2)<< " "<<stiffness<<"\n";
-        //fprintf(outFilePtr, "%f, %f, %f, %f, %f, %f, %.4f, %.4f, %.4f, %.4f\n", FT_data[0], FT_data[1], FT_data[2], FT_data[3], FT_data[4], FT_data[5], position(0), position(1), position(2), Kp);
-        //std::cout << "\rX: " << dX << ", \tY: " << dY << ", \tZ: " << dZ;
-        //std::cout << ", \tA: " << dAzimuth << ", \tE: " << dElevation << ", \tR: " << dRoll << std::endl;
-        
-    }
-    */
      myfile.close();
-    /*
-    while (!exitKey) {
-        rec_count++;
-        bird.getCoordinatesAngles( sennum, dX, dY, dZ, dAzimuth, dElevation, dRoll );
-        FT_data = Force.GetCurrentFT(numSample) ;
-        *(Vector6FT*)(shared_data) = FT_data;
-        //fprintf(outFilePtr, "%f, %f, %f, %f, %f, %f, %.4f, %.4f, %.4f\n", FT_data[0], FT_data[1], FT_data[2], FT_data[3], FT_data[4], FT_data[5], position(0), position(1), position(2));
-        //std::cout << "\rX: " << dX << ", \tY: " << dY << ", \tZ: " << dZ;
-        //std::cout << ", \tA: " << dAzimuth << ", \tE: " << dElevation << ", \tR: " << dRoll << std::endl;
-    }
-    */
-    //tb=time(NULL);
-    //std::cout << rec_count << " samples collected" << std::endl;
-    //std::cout << tb-ta << " seconds elapsed" << std::endl;
-    //std::cout << rec_count/(tb-ta) << " samples per second" << std::endl;
+     myfile1.close();
     
 }
 
 double Stiffness(double k){
-   //double stiffness= -5.27e-06*k*k + 0.9599*k + -6.851;
-//   double stiffness= 80.88*k*k + 820.6*k + 1527;
 	 double stiffness= -3.4899e-04*k*k + 2.0251*k + (-147.2680);
     
     return stiffness;

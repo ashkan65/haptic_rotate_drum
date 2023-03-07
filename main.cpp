@@ -53,17 +53,21 @@
 //==============================================================================
 
 int main(int argc, char* argv[])
-{//2200 100 2000 16
-    //srand(time(NULL)); 
-    //max_stiffness=atof(argv[1]);
-    //min_delta_stiff=atof(argv[2]);
-    //max_delta_stiff=atof(argv[3]);
-    //std::cout<<"1: "<<max_stiffness<<" 2: "<<min_delta_stiff<<" 3: "<<max_delta_stiff<<endl;
-
-    //double max_stiffness=2200;
-    //double min_delta_stiff=100;//k[2200],k[2100]
-    //double max_delta_stiff=2000.0;//k[2200],k[200]
-    //double initial_step=(max_delta_stiff-min_delta_stiff)/16.0;
+{
+    vector<int>  shared_data={0,0,0};
+    if (argc==1){
+        std::cout<<"Participant number and experiment number, and file number are not entered"<<std::endl;
+        return 0;
+    }
+    else if (argc==4){
+        shared_data[0]=atoi(argv[1]);
+        shared_data[1]=atoi(argv[2]);
+        shared_data[2]=atoi(argv[3]);
+        std::cout<<"Par"<<shared_data[0]<<" "<<shared_data[1]<<" "<<shared_data[2]<<std::endl;
+    }
+    else{
+       std::cout<<"Participant number and experiment number, and file number are not entered correctly"<<std::endl; 
+    }
        //--------------------------------------------------------------------------
     // INITIALIZATION
     //--------------------------------------------------------------------------
@@ -202,7 +206,7 @@ int main(int argc, char* argv[])
     light->setEnabled(true);
 
     // define direction of light beam
-    light->setDir(-1.0, 0.0, 0.0);
+    light->setDir(-0.7, 0.2, -1.0);
 
     // create a sphere (cursor) to represent the haptic device
     cursor = new cShapeSphere(0.01);
@@ -340,42 +344,42 @@ int main(int argc, char* argv[])
 
     // set position and orientation
     wall0->setLocalPos(0, 0, -0.025);
-    wall0->m_material->setWhite();
+    wall0->m_material->setBlueSky();
 
     cShapeBox* wall1 = new cShapeBox(0.01, 0.11, 0.08);
     world->addChild(wall1);
 
     // set position and orientation
     wall1->setLocalPos(0, 0, -0.025);
-    wall1->m_material->setWhite();
+    wall1->m_material->setBlueSky();
 
     cShapeBox* wall2 = new cShapeBox(0.13, 0.01, 0.08);
     world->addChild(wall2);
 
     // set position and orientation
     wall2->setLocalPos(0, 0.06, -0.025);
-    wall2->m_material->setWhite();
+    wall2->m_material->setBlueSky();
 
     cShapeBox* wall3 = new cShapeBox(0.13, 0.01, 0.08);
     world->addChild(wall3);
 
     // set position and orientation
     wall3->setLocalPos(0, -0.06, -0.025);
-    wall3->m_material->setWhite();
+    wall3->m_material->setBlueSky();
 
     cShapeBox* wall4 = new cShapeBox(0.01, 0.13, 0.08);
     world->addChild(wall4);
 
     // set position and orientation
     wall4->setLocalPos(0.06, 0, -0.025);
-    wall4->m_material->setWhite();
+    wall4->m_material->setBlueSky();
 
     cShapeBox* wall5 = new cShapeBox(0.01, 0.13, 0.08);
     world->addChild(wall5);
 
     // set position and orientation
     wall5->setLocalPos(-0.06, 0, -0.025);
-    wall5->m_material->setWhite();
+    wall5->m_material->setBlueSky();
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
@@ -467,9 +471,9 @@ int main(int argc, char* argv[])
     //--------------------------------------------------------------------------
     // START THREADS
     //--------------------------------------------------------------------------
-    Vector6FT shared_data;
+    // Vector6FT shared_data;
     void *a;
-    a = &shared_data;
+    a = &shared_data[0];
 
     // create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();

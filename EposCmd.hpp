@@ -270,16 +270,16 @@ long positiveModulus(long a, long b){
 }
 
 long getNewTargetPosition(long currentPosition, int TargetFace){
-	long currentFaceWithoutModulus = (currentPosition / 6000);
+	long currentFaceWithoutModulus = (currentPosition / 6000.0);
 
 	if (positiveModulus(currentFaceWithoutModulus, 3) == TargetFace){
-		return currentPosition + 3000;
+		return currentPosition;
 	}
 	if (positiveModulus(currentFaceWithoutModulus + 1, 3) == TargetFace){
-		return currentPosition + 6000;
+		return currentPosition + 6000.0;
 	}
 	if (positiveModulus(currentFaceWithoutModulus - 1, 3) == TargetFace){
-		return currentPosition - 6000;
+		return currentPosition - 6000.0;
 	}
 }
 
