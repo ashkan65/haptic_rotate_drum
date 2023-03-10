@@ -322,13 +322,14 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 
 		while (true)
 		{
+
 			// Sleep for 0.1 second if no need to rotate
 			if (TargetFace == CurrentFace){
 				nanosleep((const struct timespec[]){{0, 100000000L}}, NULL); 
 				continue;
 			}
 
-			
+			int TargetFaceSave = TargetFace;
 			
 			if (TargetFace == 0 || TargetFace == 1 || TargetFace == 2){
 				targetPosition = getNewTargetPosition(targetPosition, TargetFace);
@@ -362,7 +363,7 @@ int DemoProfilePositionMode(HANDLE p_DeviceHandle, unsigned short p_usNodeId, un
 			VCS_GetPositionIs(p_DeviceHandle, p_usNodeId, &currentPosition, &p_rlErrorCode);
 
 			// std::cout << " reached position " << currentPosition << " expected color is "<< colorName[TargetFace]<< std::endl;
-			CurrentFace = TargetFace;
+			CurrentFace = TargetFaceSave;
 			positionIndex++;
 
 			nanosleep((const struct timespec[]){{0, 100000000L}}, NULL);
